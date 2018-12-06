@@ -1,0 +1,8 @@
+Type;Questions;Answers
+select;Did you preregister your study or published your study protocol?;Yes, No
+select;Did you preregister all of your stopping criteria for data collection?;All, Partially, None, N/A
+select;Does the preregistration indicate how the analysis deals with discarding of cases (e.g., outliers, items) and with incomplete or missing data (e.g., dropouts)?;All, Partially, None, N/A
+select;Is it clear from the paper which of your hypotheses are confirmatory and which are exploratory (planned after or during data analysis)?;Yes, No
+select;Have you provided your final dataset (along with an explanation of variable names, coding, etc.) that you used in your analyses? If not then please explain why, and indicate how one can access the data on which the analyses of the manuscript were based?;Yes, Explain
+select;Did you make the stimuli and test materials openly accessible if they are not easily available for researchers?;Yes, No
+select;Did you make the code or software openly accessible if they are not easily available for researchers?;Yes, No

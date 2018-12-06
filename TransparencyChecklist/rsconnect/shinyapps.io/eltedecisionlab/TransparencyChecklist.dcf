@@ -1,0 +1,12 @@
+name: TransparencyChecklist
+title: TransparencyChecklist
+username:
+account: eltedecisionlab
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 597924
+bundleId: 1736183
+url: https://eltedecisionlab.shinyapps.io/TransparencyChecklist/
+when: 1543838531.16406
+asMultiple: FALSE
+asStatic: FALSE
