@@ -1,0 +1,124 @@
+{ "Head": [ 
+  {
+    "Type": "textInput",
+    "Label": "Title of the Study",
+    "AnswerType": "",
+    "Name": "studyTitle"
+  },
+  {
+    "Type": "textInput",
+    "Label": "All Authors [Given name(s) Surname;] *",
+    "AnswerType": "",
+    "Name": "authorNames"
+  },
+  {
+    "Type": "textInput",
+    "Label": "Corresponding author's email address *",
+    "AnswerType": "@",
+    "Name": "correspondingEmail"
+  },
+  {
+    "Type": "textInput",
+    "Label": "Link to Project Repository *",
+    "AnswerType": "",
+    "Name": "linkToRepository"
+  }
+  ],
+  "Sections" : {
+    "Preregistration": {
+      "Name": "PREREGISTRATION SECTION",
+      "Label": "Prior to analyzing the complete data set, a time-stamped preregistration was posted in an independent, institutional registry for the...",
+      "Questions": [
+        {
+          "Type": "radio",
+          "Label": "study protocol",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Label": "data analysis plan",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Label": "The manuscript includes a URL to all preregistrations that concern the present study.",
+          "AnswerType": "YesNo",
+          "Depends": ".ind_1 == 'Yes' || .ind_2 == 'Yes'"
+        },
+        {
+          "Type": "select",
+          "Label": "The study was preregistered...",
+          "AnswerType": "BeforeExplain",
+          "Depends": ".ind_1 == 'Yes' || .ind_2 == 'Yes'"
+        },        
+        {
+          "Type": "textArea",
+          "Label": "Explain",
+          "AnswerType": "",
+          "Name": "ind_4_explain",
+          "Depends": "(.ind_1 == 'Yes' || .ind_2 == 'Yes') && .ind_4 == 'at another time, explain'"
+        },
+        {
+          "Type": "text",
+          "Label": "The preregistration fully describes...",
+          "Depends": ".ind_1 == 'Yes' || .ind_2 == 'Yes'",
+          "Name": "headerPreregistrationSubsection"
+        },
+        {
+          "Type": "radio",
+          "Label": "all participant eligibility criteria (e.g., fluent English speakers)",
+          "AnswerType": "YesNo",
+          "Depends": ".ind_1 == 'Yes' || .ind_2 == 'Yes'"
+        },
+        {
+          "Type": "radio",
+          "Label": "all operationalizations of the participant eligibility criteria (e.g., cutoff scores in a language test)",
+          "AnswerType": "YesNo",
+          "Depends": "(.ind_1 == 'Yes' || .ind_2 == 'Yes') && .ind_5 == 'Yes'"
+        },
+        {
+          "Type": "comment",
+          "Label": "Comments about your preregistration",
+          "AnswerType": "Write your comments here...",
+          "Name": "comment_preregistration"
+        }
+        
+      ]
+  },
+    "Methods": {
+      "Name": "METHODS SECTION",
+      "Label": "The manuscript fully describes...",
+      "Questions": [
+        {
+          "Type": "radio",
+          "Label": "the rationale for the sample size used (e.g., an a priori power analysis)",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Label": "any changes to the preregistration (such as changes in eligibility criteria, group membership cutoffs, or experimental procedures)?",
+          "AnswerType": "YesNo",
+          "Depends": ".ind_1 == 'Yes' || .ind_2 == 'Yes'"
+        },
+        {
+          "Type": "comment",
+          "Label": "Comments about your methods",
+          "AnswerType": "Write your comments here...",
+          "Name": "comment_methods"
+        }
+      ]
+    }
+  },
+  "Answers": {
+    "YesNo": {"Yes": "Yes", "No": "No", "N/A": "NA"},
+    "BeforeExplain": {"before any data were collected": "before any data were collected",
+                      "after some data were collected, but before exploring the data": "after some data were collected, but before exploring the data",
+                      "after all data were collected, but before exploring the data": "after all data were collected, but before exploring the data",
+                      "after exploring the data, but before any statistical analyses were conducted": "after exploring the data, but before any statistical analyses were conducted",
+                      "after some but not all statistical analyses were conducted": "after some but not all statistical analyses were conducted", 
+                      "at another time, explain": "at another time, explain" },
+    "AlltoNone": {"All": "All", "Partially": "Partially", "None": "None", "N/A": "NA"},
+    "YesExplain": {"Yes": "Yes", "Explain": "Explain"},
+    "Explain": "Provide an explanation here..."
+  }
+}    
