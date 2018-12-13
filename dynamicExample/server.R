@@ -34,9 +34,9 @@ shinyServer(function(input, output, session) {
   })
   
   # Temporary output that shows the current answers for debugging
-  output$answers <- renderPrint({
-    answers()
-  })
+  #output$answers <- renderPrint({
+  #  answers()
+  #})
   
   # checks whether the report is complete
   isDownloadable <- reactive({

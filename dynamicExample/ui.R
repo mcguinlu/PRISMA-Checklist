@@ -52,11 +52,11 @@ shinyUI(fluidPage(
   shinyBS::bsTooltip(id = "report",
                      title = "Please, respond to all displayed items to download the pdf report (comments are optional).",
                      trigger = "manual"),
-  uiOutput("trigger"), # this trigger displays or hides the explaining tooltip
+  uiOutput("trigger") # this trigger displays or hides the explaining tooltip
   
   # temporary (for debugging): showing the current status of the answers
-  br(),
-  verbatimTextOutput("answers")
+  #br(),
+  #verbatimTextOutput("answers")
   
 
   )
