@@ -2,7 +2,9 @@ library(shiny)
 library(shinyWidgets)
 library(shinyjs)
 library(shinyBS)
+library(shinyFeedback)
 library(jsonlite)
+library(RCurl) # for checking whether url.exists
 
 source("R/helpers.R")
 source("R/validation.R")
@@ -26,7 +28,7 @@ sectionsList <- lapply(sectionsList, function(Sec){
       x <- c(x, Name = paste0("ind_", ind))
       
       # add the number of the question to the question label
-      x$Label <- paste0(ind, ") ", x$Label)
+      x$Label <- paste0("(", ind, ") ", x$Label)
       ind <<- ind + 1 
     }
     

@@ -1,7 +1,8 @@
-isValidEmail <- function(x) {
+isValidEmail <- function(x, empty.valid) {
   # code from Felix Schönbrodt
   grepl("\\<[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}\\>", as.character(x), ignore.case=TRUE)
 }
+
 
 isComplete <- function(answers = NULL, sectionsList = NULL, headList = NULL){
   # First, check whether the answers to the header questions are:
@@ -16,8 +17,8 @@ isComplete <- function(answers = NULL, sectionsList = NULL, headList = NULL){
     return(FALSE)
   }
   
-  # Check the head and return FALSE if not filled in correctly
-  completeHead <- sapply(headList, function(question){
+  # Check the head and return FALSE if not filled in correctly (check only the name project name and authors)
+  completeHead <- sapply(headList[1:2], function(question){
     gsub(" ", "", answers[[question$Name]]) != ""
   })
   
@@ -25,11 +26,12 @@ isComplete <- function(answers = NULL, sectionsList = NULL, headList = NULL){
     return(FALSE)
   }
   
-  validEmail <- isValidEmail(answers$correspondingEmail)
+  # do not require e-mail anymore
+  #validEmail <- isValidEmail(answers$correspondingEmail)
   
-  if(!validEmail){
-    return(FALSE)
-  }
+  #if(!validEmail){
+  #  return(FALSE)
+  #}
   
   # Check questions and return TRUE if filled in sufficiently
   completeSection <- sapply(sectionsList, function(section){

@@ -7,13 +7,13 @@
   },
   {
     "Type": "textInput",
-    "Label": "All Authors [Given name(s) Surname;] *",
+    "Label": "All Authors [Given name(s) Surname;]",
     "AnswerType": "",
     "Name": "authorNames"
   },
   {
     "Type": "textInput",
-    "Label": "Corresponding author's email address *",
+    "Label": "Corresponding author's email address",
     "AnswerType": "@",
     "Name": "correspondingEmail"
   },
@@ -105,6 +105,45 @@
           "Label": "Comments about your methods",
           "AnswerType": "Write your comments here...",
           "Name": "comment_methods"
+        }
+      ]
+    },
+    "Results": {
+      "Name": "RESULTS AND DISCUSSION SECTION",
+      "Label": "The manuscript...",
+      "Questions": [
+        {
+          "Type": "radio",
+          "Label": "presents all statistical analyses that were conducted, including any interim statistical analyses",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Label": "distinguishes sharply between \"confirmatory\" (i.e., prespecified) and \"exploratory\" (i.e., not prespecified) analyses",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "comment",
+          "Label": "Comments about your Results and Discussion section",
+          "AnswerType": "Write your comments here...",
+          "Name": "comment_results"
+        }
+      ]
+    },
+    "Availability": {
+      "Name": "DATA, CODE, AND MATERIALS AVAILABILITY",
+      "Label": "The following have been made publicly available...",
+      "Questions": [
+        {
+          "Type": "radio",
+          "Label": "the (processed) data, on which the analyses of the manuscript were based",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "comment",
+          "Label": "Comments about your Data, Code, and Material Availability",
+          "AnswerType": "Write your comments here...",
+          "Name": "comment_availability"
         }
       ]
     }

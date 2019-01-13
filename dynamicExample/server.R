@@ -12,7 +12,7 @@ library(shiny)
 shinyServer(function(input, output, session) {
   
   output$currentTime <- renderText({
-    invalidateLater(1000, session)
+    #invalidateLater(1000, session)
     paste("Created on: ", format(Sys.time(), '%d %B, %Y'))
   })
   
@@ -40,6 +40,7 @@ shinyServer(function(input, output, session) {
   
   # checks whether the report is complete
   isDownloadable <- reactive({
+    #TRUE
     isComplete(answers = answers(), sectionsList = sectionsList, headList = headList)
   })
   
@@ -54,22 +55,57 @@ shinyServer(function(input, output, session) {
   
   # whenever the input is not complete, show the tooltip for explanation for the download button
   output$trigger <- renderUI({
-   
     if(isDownloadable()){
       tags$script("$('#report').tooltip('hide');")
     } else{
       tags$script("$('#report').tooltip('show');")
+      # tags$script("$('#downloadButtonMouseCatcher').mouseover(function() {
+      #                 $('#downloadButtonMouseCatcher').tooltip('show');
+      #              });")
     }
 
   })
   
-  # This is a toy example how to do another validation alerts: for example, showing the user that the email is in a wrong format
-  output$triggerEmail <- renderUI({
-    email <- answers()$correspondingEmail
-    if(email == "@" || isValidEmail(email)){
-      tags$script("$('#correspondingEmail').tooltip('hide');")
-    } else{
-      tags$script("$('#correspondingEmail').tooltip('show');")
+  
+  # validate e-mail
+  observeEvent(input$correspondingEmail, {
+    if (input$correspondingEmail == "@"){
+      
+    } else if (isValidEmail(input$correspondingEmail)){
+      feedbackSuccess(
+        inputId = "correspondingEmail",
+        condition = TRUE,
+        text = " ",
+        color = "black"
+      )
+    } else {
+      feedbackWarning(
+        inputId = "correspondingEmail",
+        condition = TRUE,
+        text = "Provided email appears invalid",
+        color = "black"
+      )
+    }
+  })
+  
+  # validate link
+  observeEvent(input$linkToRepository, {
+    if (input$linkToRepository == ""){
+      
+    } else if (RCurl::url.exists(input$linkToRepository)){
+      feedbackSuccess(
+        inputId = "linkToRepository",
+        condition = TRUE,
+        text = " ",
+        color = "black"
+      )
+    } else {
+      feedbackWarning(
+        inputId = "linkToRepository",
+        condition = TRUE,
+        text = "The link cannot be accessed.",
+        color = "black"
+      )
     }
   })
   

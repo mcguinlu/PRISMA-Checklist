@@ -61,6 +61,7 @@ customButton <- function(ind){
                      fluidRow(column(1),
                               column(6, br(), ind$Label), # this makes the buttons appear horizonally aligned
                               column(4, switchButtons(ind)), # create a standard shiny button
+                              #column(1, icon("warning-sign", lib="glyphicon")),
                               column(1)
                      )
     )
