@@ -13,7 +13,7 @@ isComplete <- function(answers = NULL, sectionsList = NULL, headList = NULL){
   # (does not loop over everything, unless everything is valid)
   
   # When the app is being initialized, do not test anything
-  if(length(answers) == 0){
+  if(length(answers) == 8){
     return(FALSE)
   }
   

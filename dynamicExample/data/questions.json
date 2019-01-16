@@ -19,7 +19,7 @@
   },
   {
     "Type": "textInput",
-    "Label": "Link to Project Repository *",
+    "Label": "Link to Project Repository",
     "AnswerType": "",
     "Name": "linkToRepository"
   }

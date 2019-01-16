@@ -3,8 +3,11 @@ library(shinyWidgets)
 library(shinyjs)
 library(shinyBS)
 library(shinyFeedback)
+library(shinyanimate)
 library(jsonlite)
 library(RCurl) # for checking whether url.exists
+library(digest)
+library(markdown)
 
 source("R/helpers.R")
 source("R/validation.R")

@@ -4,7 +4,7 @@
 renderSection <- function(section){
   # creates a tab ( can be changed to a fluidrow if we do not want tabs)
   
-  tabPanel(section$Name,
+  tabPanel(title = section$Name, value = digest::digest(section$Name),
     br(),
     # create the header and an initial info about the section
     fluidRow(column(1),
@@ -60,8 +60,15 @@ customButton <- function(ind){
     conditionalPanel(condition = ind$Depends,
                      fluidRow(column(1),
                               column(6, br(), ind$Label), # this makes the buttons appear horizonally aligned
-                              column(4, switchButtons(ind)), # create a standard shiny button
-                              #column(1, icon("warning-sign", lib="glyphicon")),
+                              column(3, switchButtons(ind)), # create a standard shiny button
+                              column(1, br(),
+                                     tags$div(
+                                       id = paste0("div", ind$Name, "Checker"),
+                                       title = "This question needs to be answered.",
+                                       tags$i(id = paste0(ind$Name, "Checker"),
+                                              class = 'fa fa-exclamation-circle')
+                                       )
+                                     ),
                               column(1)
                      )
     )
@@ -92,11 +99,16 @@ switchButtons <- function(ind){
   
   # switch between different input types
   switch (ind$Type,
-    "select" = pickerInput (inputId = ind$Name, label = "", choices = c("", answers),
-                            selected = NULL, multiple = FALSE),
-    "radio"  = radioButtons(inputId = ind$Name, label = "", choices = answers, selected = 0,
-                            inline = TRUE),
-    "textInput"   = textInput   (inputId = ind$Name, label = ind$Label, value = ind$AnswerType),
-    "textArea" = textAreaInput(inputId = ind$Name, label = "", placeholder =  answers, rows = 6)
+    "select"    = pickerInput(inputId = ind$Name, label = "", choices = c("", answers),
+                              selected = NULL, multiple = FALSE),
+    "radio"     = radioButtons(inputId = ind$Name, label = "", choices = answers, selected = 0,
+                               inline = TRUE),
+    "textInput" = textInput(inputId = ind$Name, label = ind$Label, value = ind$AnswerType),
+    "textArea"  = textAreaInput(inputId = ind$Name, label = "", placeholder =  answers, rows = 6)
   )
+}
+
+
+getItemList <- function(sectionsList){
+  unlist(sapply(sectionsList, function(section) sapply(section$Questions, function(item) item$Name)))
 }
