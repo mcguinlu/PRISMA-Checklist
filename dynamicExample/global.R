@@ -16,6 +16,8 @@ source("R/renderPDF.R")
 
 # First, we load the .json, which defines the structure of the application
 questions <- jsonlite::read_json(path = "data/questions.json")
+# for short checklist:
+#questions <- jsonlite::read_json(path = "data/questionsShort.json")
 headList <- questions$Head
 sectionsList <- questions$Sections
 answerList <- questions$Answers

@@ -34,83 +34,16 @@
           "AnswerType": "YesNo"
         },
         {
-          "Type": "radio",
-          "Label": "The manuscript includes a URL to all preregistrations that concern the present study.",
-          "AnswerType": "YesNo",
-          "Depends": ".ind_1 == 'Yes'"
-        },
-        {
           "Type": "select",
           "Label": "The study was preregistered...",
           "AnswerType": "BeforeExplain",
           "Depends": ".ind_1 == 'Yes'"
-        },        
-        {
-          "Type": "textArea",
-          "Label": "Explain",
-          "AnswerType": "",
-          "Name": "ind_3_explain",
-          "Depends": ".ind_1 == 'Yes' && .ind_3 == 'at another time, explain'"
         },
         {
           "Type": "text",
           "Label": "The preregistration fully describes...",
           "Depends": ".ind_1 == 'Yes'",
           "Name": "headerPreregistrationSubsection"
-        },
-        {
-          "Type": "radio",
-          "Label": "all inclusion and exclusion criteria for participation (e.g., English speakers who achieved a certain cutoff score in a language test).",
-          "AnswerType": "YesNo",
-          "Depends": ".ind_1 == 'Yes'"
-        },
-        {
-          "Type": "radio",
-          "Label": "all procedures for assigning participants to conditions.",
-          "AnswerType": "YesNo",
-          "Depends": ".ind_1 == 'Yes'"
-        },
-        {
-          "Type": "radio",
-          "Label": "all procedures for randomizing stimulus materials.",
-          "AnswerType": "YesNo",
-          "Depends": ".ind_1 == 'Yes'"
-        },
-        {
-          "Type": "radio",
-          "Label": "all procedures for ensuring that participants and experimenters were kept naive (blinded) to potentially biasing information.",
-          "AnswerType": "YesNo",
-          "Depends": ".ind_1 == 'Yes'"
-        },
-        {
-          "Type": "radio",
-          "Label": "a rationale for the sample size used (e.g., an a priori power analysis).",
-          "AnswerType": "YesNo",
-          "Depends": ".ind_1 == 'Yes'"
-        },
-        {
-          "Type": "radio",
-          "Label": "your measures of interest (e.g., friendliness).",
-          "AnswerType": "YesNo",
-          "Depends": ".ind_1 == 'Yes'"
-        },
-        {
-          "Type": "radio",
-          "Label": "all operationalizations for your measures of interest (e.g., a questionnaire measuring friendliness).",
-          "AnswerType": "YesNo",
-          "Depends": ".ind_1 == 'Yes' && .ind_9 == 'Yes'"
-        },
-        {
-          "Type": "radio",
-          "Label": "how the data were planned to be preprocessed (e.g., transformed, cleaned, normalized, smoothed).",
-          "AnswerType": "YesNo",
-          "Depends": ".ind_1 == 'Yes'"
-        },
-        {
-          "Type": "radio",
-          "Label": "how missing data (e.g., dropouts) were planned to be handled.",
-          "AnswerType": "YesNo",
-          "Depends": ".ind_1 == 'Yes'"
         },
         {
           "Type": "radio",
@@ -138,54 +71,13 @@
         },
         {
           "Type": "radio",
-          "Label": "how participants were recruited.",
-          "AnswerType": "YesNo"
-        },
-        {
-          "Type": "radio",
-          "Label": "how participants were selected (e.g., eligibility criteria).",
-          "AnswerType": "YesNo"
-        },
-        {
-          "Type": "radio",
-          "Label": "what compensation was offered for participation.",
-          "AnswerType": "YesNo"
-        },
-        {
-          "Type": "radio",
-          "Label": "how participant dropout was handled (e.g., replaced, omitted, etc).",
-          "AnswerType": "YesNo"
-        },
-        {
-          "Type": "radio",
-          "Label": "how participants were assigned to conditions.",
-          "AnswerType": "YesNo"
-        },
-        {
-          "Type": "radio",
-          "Label": "how stimulus materials were randomized.",
-          "AnswerType": "YesNo"
-        },
-        {
-          "Type": "radio",
-          "Label": "how participants, experimenters, and data-analysts were kept naive to potentially biasing information.",
-          "AnswerType": "YesNo"
-        },
-        {
-          "Type": "radio",
           "Label": "the study design, procedures, and materials to allow independent replication.",
           "AnswerType": "YesNo"
         },
         {
           "Type": "radio",
-          "Label": "your measures of interest (e.g., friendliness).",
+          "Label": "your measures of interest (e.g., friendliness) and their operationalizations (e.g., a questionnaire measuring friendliness).",
           "AnswerType": "YesNo"
-        },
-        {
-          "Type": "radio",
-          "Label": "all operationalizations for your measures of interest (e.g., a questionnaire measuring friendliness).",
-          "AnswerType": "YesNo",
-          "Depends": ".ind_23 == 'Yes'"
         },
         {
           "Type": "radio",
@@ -208,31 +100,6 @@
         {
           "Type": "radio",
           "Label": "distinguishes sharply between \"confirmatory\" (i.e., prespecified) and \"exploratory\" (i.e., not prespecified) analyses.",
-          "AnswerType": "YesNo"
-        },
-        {
-          "Type": "radio",
-          "Label": "describes how violations of statistical assumptions were handled.",
-          "AnswerType": "YesNo"
-        },
-        {
-          "Type": "radio",
-          "Label": "justifies all statistical choices (e.g., including or excluding covariates; applying or not applying transformations; use of multi-level models vs. ANOVA).",
-          "AnswerType": "YesNo"
-        },
-        {
-          "Type": "radio",
-          "Label": "reports the sample size for each cell of the design.",
-          "AnswerType": "YesNo"
-        },
-        {
-          "Type": "radio",
-          "Label": "reports how incomplete or missing data were handled.",
-          "AnswerType": "YesNo"
-        },
-        {
-          "Type": "radio",
-          "Label": "presents protocols for data preprocessing (e.g., cleaning, discarding of cases and items, normalizing, smoothing, artifact correction).",
           "AnswerType": "YesNo"
         },
         {
@@ -266,12 +133,6 @@
           "Type": "text",
           "Label": "",
           "Name": "DataAvailableSectionIndenting"
-        },
-        {
-          "Type": "radio",
-          "Label": "Are the data properly archived (i.e., would a graduate student with relevant background knowledge be able to identify each variable and reproduce the analysis)?",
-          "AnswerType": "YesNo",
-          "Depends": ".ind_32 == 'Yes' || .ind_33 == 'Yes' || .ind_34 == 'Yes'"
         },
         {
           "Type": "radio",
