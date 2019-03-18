@@ -17,17 +17,16 @@ shinyServer(function(input, output, session) {
     paste("Created on: ", format(Sys.time(), '%d %B, %Y'))
   })
   
+  # Deprecated rendering of sections (now created in global.R and passed in ui directly)
   # render the header section
-  output$head <- renderUI({
-    lapply(headList, switchButtons)
-  })
+  # output$head <- renderUI({
+  #   headingHTML
+  # })
   
   # render sections as tab sections
-  output$questions <- renderUI({
-    sections <- lapply(sectionsList, renderSection)
-    names(sections) <- NULL
-    do.call(tabsetPanel, c(sections, id = "sections"))
-  })
+  # output$questions <- renderUI({
+  #   sectionsHTML
+  # })
   
   #### Store answers, check whether checklist is complete ----
   # stores the answers in a list
@@ -37,20 +36,20 @@ shinyServer(function(input, output, session) {
   
   #### Moving to the next or previous sections ----
   observeEvent(input$nextButton, {
-    sectionId <- sapply(sectionsList, function(section) digest::digest(section$Name))
+    sectionId <- sapply(sectionsList, function(section) section$Value)
     currSection <- which(sectionId == input$sections)
     nextSection <- currSection + 1
     updateTabsetPanel(session, "sections", selected = sectionId[[nextSection]])
   })
   observeEvent(input$previousButton, {
-    sectionId <- sapply(sectionsList, function(section) digest::digest(section$Name))
+    sectionId <- sapply(sectionsList, function(section) section$Value)
     currSection <- which(sectionId == input$sections)
     nextSection <- currSection - 1
     updateTabsetPanel(session, "sections", selected = sectionId[[nextSection]])
   })
   # disable moving next or previous for first and last sections
   observeEvent(input$sections, {
-    sectionId <- sapply(sectionsList, function(section) digest::digest(section$Name))
+    sectionId <- sapply(sectionsList, function(section) section$Value)
     currSection <- which(sectionId == input$sections)
     if(currSection == 1){
       shinyjs::disable("previousButton")
@@ -64,19 +63,20 @@ shinyServer(function(input, output, session) {
       shinyjs::enable("nextButton")
     }
   })
-  # observeEvent(currSection(), {
-  #   sectionId <- sapply(sectionsList, function(section) section$Name)
-  # 
-  #   updateTabsetPanel(session, "", selected = digest::digest(sectionId[currSection()]))
-  # })
+
   # Temporary output that shows the current answers for debugging
   # output$answers <- renderPrint({
   #  answers()
   # })
   
+  # checks which sections are complete
+  whichComplete <- reactive({
+    isComplete(answers = answers(), sectionsList = sectionsList, headList = headList)
+  })
+  
   # checks whether the report is complete
   isDownloadable <- reactive({
-    isComplete(answers = answers(), sectionsList = sectionsList, headList = headList)
+    all(whichComplete())
   })
   
   #### Reactive animations ----
@@ -105,7 +105,7 @@ shinyServer(function(input, output, session) {
   
   # changing icons when item is answered
   observe({
-    items <- getItemList(sectionsList)
+    items <- getItemList(sectionsList, all = FALSE) # loop only on items
     
     for(item in items){
       session$sendCustomMessage(
@@ -114,6 +114,47 @@ shinyServer(function(input, output, session) {
       )
     }
   
+  })
+  
+  observeEvent(input$generatereport, {
+    sectionId <- sapply(sectionsList, function(section) section$Value)
+    
+    #if(!isDownloadable()){
+      for(section in sectionId){
+        # output[[paste0("icon_", section)]] <- renderText({"table"})
+      }  
+    #}
+  })
+  
+  observeEvent(input$generatereport, {
+    items <- getItemList(sectionsList, all = FALSE)
+    ans   <- isolate(answers())
+    
+    for(item in items){
+      if(ans[item] == "" || is.null(ans[[item]])){
+        shinyanimate::startAnim(session, paste0(item, "Checker"), type = "shake")
+      }
+      
+      session$sendCustomMessage(
+        type = "toggleCheckerColor",
+        message = list(id = paste0(item, "Checker"), val = input[[item]], divId = paste0("div", item, "Checker"))
+      )
+    }
+  })
+ 
+  # Change icons in Section headings (three state option)
+  observe({
+    sectionValues <- sapply(sectionsList, function(sec) sec$Value)
+    for(i in seq_along(sectionValues)){
+      session$sendCustomMessage(
+        type = "toggleSectionIcon",
+        # as long as the user does not click "report", do not display aggresive feedback (-> val = "init")
+        message = list(id = paste0(".icon", sectionValues[[i]]),
+                       val = ifelse(input$generatereport == 0 && !whichComplete()[[i]],
+                                    "init", whichComplete()[[i]])
+                       )
+      )
+    }
   })
   
   # validate title of the study
@@ -139,21 +180,27 @@ shinyServer(function(input, output, session) {
   
   # validate e-mail
   observeEvent(input$correspondingEmail, {
-    if (input$correspondingEmail == "@"){
-
+    if (input$correspondingEmail == "@" || input$correspondingEmail == ""){
+      feedback(
+        inputId   = "correspondingEmail",
+        condition = TRUE,
+        text      = " ",
+        color     = "black",
+        icon      = NULL
+      )
     } else if (isValidEmail(input$correspondingEmail)){
       feedbackSuccess(
-        inputId = "correspondingEmail",
+        inputId   = "correspondingEmail",
         condition = TRUE,
-        text = " ",
-        color = "black"
+        text      = " ",
+        color     = "black"
       )
     } else {
       feedbackWarning(
-        inputId = "correspondingEmail",
+        inputId   = "correspondingEmail",
         condition = TRUE,
-        text = "Provided email appears invalid.",
-        color = "black"
+        text      = "Provided email appears invalid.",
+        color     = "black"
       )
     }
   })
@@ -161,24 +208,31 @@ shinyServer(function(input, output, session) {
   # validate link
   observeEvent(input$linkToRepository, {
     if (input$linkToRepository == ""){
-      
+      feedback(
+        inputId   = "linkToRepository",
+        condition = TRUE,
+        text      = " ",
+        color     = "black",
+        icon      = NULL
+      )
     } else if (RCurl::url.exists(input$linkToRepository)){
       feedbackSuccess(
-        inputId = "linkToRepository",
+        inputId   = "linkToRepository",
         condition = TRUE,
-        text = NULL,
-        color = "black"
+        text      = " ",
+        color     = "black"
       )
     } else {
       feedbackWarning(
-        inputId = "linkToRepository",
+        inputId   = "linkToRepository",
         condition = TRUE,
-        text = "The link cannot be accessed.",
-        color = "black"
+        text      = "The link cannot be accessed.",
+        color     = "black"
       )
     }
   })
-
+  
+  
   #### Working with report ----
   # Stash current Rmd if report dropdown is opened or save_as is changed  
   RmdFile <- reactive({
@@ -221,7 +275,7 @@ shinyServer(function(input, output, session) {
     
     filename = function() {
       save.as <- ifelse(input$save.as == "word", "doc", input$save.as)
-      paste("report", save.as, sep = ".")
+      paste("Transparency Report", save.as, sep = ".")
     },
     
     content = function(file) {

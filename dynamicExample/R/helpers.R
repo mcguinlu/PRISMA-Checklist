@@ -4,7 +4,10 @@
 renderSection <- function(section){
   # creates a tab ( can be changed to a fluidrow if we do not want tabs)
   
-  tabPanel(title = section$Name, value = digest::digest(section$Name),
+  tabPanel(title = section$Name, 
+           value = section$Value, 
+           icon  = tags$i(class = paste0("icon", section$Value, " fa fa-eye")),#icon("table"),
+           #id    = section$Value,
     br(),
     # create the header and an initial info about the section
     fluidRow(column(1),
@@ -59,9 +62,11 @@ customButton <- function(ind){
     fluidPage( # wrapping into another fluid page makes a slight indentation of the questions from the text fields
     conditionalPanel(condition = ind$Depends,
                      fluidRow(column(1),
-                              column(6, br(), ind$Label), # this makes the buttons appear horizonally aligned
+                              column(6, br(), ind$Label, 
+                                     a(ind$href, href = ind$href, target = "_blank"),
+                                     ind$LabelEnd), # this makes the buttons appear horizonally aligned
                               column(3, switchButtons(ind)), # create a standard shiny button
-                              column(1, br(),
+                              column(1, br(), # adds exclamation circle next to the item
                                      tags$div(
                                        id = paste0("div", ind$Name, "Checker"),
                                        title = "This question needs to be answered.",
@@ -109,6 +114,12 @@ switchButtons <- function(ind){
 }
 
 
-getItemList <- function(sectionsList){
-  unlist(sapply(sectionsList, function(section) sapply(section$Questions, function(item) item$Name)))
+getItemList <- function(sectionsList, all = TRUE){
+  items <- unlist(sapply(sectionsList, function(section) sapply(section$Questions, function(item) item$Name)))
+  
+  if(all){
+    return(items)
+  } else {
+    return(items[grep("ind", items)])
+  }
 }

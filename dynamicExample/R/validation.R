@@ -18,13 +18,13 @@ isComplete <- function(answers = NULL, sectionsList = NULL, headList = NULL){
   }
   
   # Check the head and return FALSE if not filled in correctly (check only the name project name and authors)
-  completeHead <- sapply(headList[1:2], function(question){
-    gsub(" ", "", answers[[question$Name]]) != ""
-  })
-  
-  if(!all(completeHead)){
-    return(FALSE)
-  }
+  # completeHead <- sapply(headList[1:2], function(question){
+  #   gsub(" ", "", answers[[question$Name]]) != ""
+  # })
+  # 
+  # if(!all(completeHead)){
+  #   return(FALSE)
+  # }
   
   # do not require e-mail anymore
   #validEmail <- isValidEmail(answers$correspondingEmail)
@@ -53,12 +53,13 @@ isComplete <- function(answers = NULL, sectionsList = NULL, headList = NULL){
   })
   
   # Check whether all sections are complete
-  if(!all(completeSection)){
-    return(FALSE)
-  }
+  #if(!all(completeSection)){
+  return(completeSection)
+  #}
+  
   
   # the report is complete if and only if all shown questions are filled in appropriately
-  return(TRUE)
+  #return(TRUE)
 }
 
 isCompleteQuestion <- function(question, answers){

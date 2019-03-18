@@ -113,7 +113,11 @@ composeSections <- function(section, answers = NULL){
   
   # Fill in the section Name, the text, and the generated questions
   body <- gsub("&SectionName", section$Name, body)
-  body <- gsub("&SectionLabel", section$Label, body)
+  if(is.null(section$Label) || section$Label == ""){
+    body <- gsub("\\*\\*&SectionLabel\\*\\*", "", body)
+  } else{
+    body <- gsub("&SectionLabel", section$Label, body)
+  }
   body <- gsub("&Questions", paste(questions, collapse = " \n"), body)
   
   # Escape latex backslashes from the question generation
@@ -162,11 +166,23 @@ composeQuestions <- function(question, answers = answers){
     answer <- ""
   }
   
+
   # layout Labels:
+  if(!is.null(question$href)){
+    question$Label <- paste0(question$Label, "[", question$href, "](", question$href, ")")
+  }
+  if(!is.null(question$LabelEnd)){
+    question$Label <- paste0(question$Label, question$LabelEnd)
+  }
+  
   if( !(question$Type %in% c("comment", "text"))){
     label <- paste0(" ", question$Label, " &escape&hfill")
   } else if(question$Type == "text" || (question$Type == "comment" && question$Label != "Explain")){
-    label <- paste0("**", question$Label, "**")
+    if(question$Label == ""){
+      label <- paste0("\n")
+    } else{
+      label <- paste0("**", question$Label, "**")
+    }
   } else{
     label <- ""
   }

@@ -4,6 +4,7 @@ library(shinyjs)
 library(shinyBS)
 library(shinyFeedback)
 library(shinyanimate)
+library(shinythemes)
 library(jsonlite)
 library(RCurl) # for checking whether url.exists
 library(digest)
@@ -18,7 +19,6 @@ questions <- jsonlite::read_json(path = "data/questions.json")
 headList <- questions$Head
 sectionsList <- questions$Sections
 answerList <- questions$Answers
-
 
 
 # Name the questions (ind_1 ... ind_n) - this slightly reduces the tedious filling in of quesiton numbers in .json
@@ -38,5 +38,16 @@ sectionsList <- lapply(sectionsList, function(Sec){
     x
   })
   
+  Sec$Value <- digest::digest(Sec$Name)
+  
   Sec
 })
+
+
+# write html code for sections prior opening the app
+sectionsHTML <- lapply(sectionsList, renderSection)
+names(sectionsHTML) <- NULL
+sectionsHTML <- do.call(tabsetPanel, c(sectionsHTML, id = "sections"))
+
+# write html code for heading
+headHTML <- lapply(headList, switchButtons)
