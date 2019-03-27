@@ -1,0 +1,12 @@
+name: TransparencyChecklistShort
+title: TransparencyChecklistShort
+username:
+account: kucharssim
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 817494
+bundleId: 1967760
+url: https://kucharssim.shinyapps.io/TransparencyChecklistShort/
+when: 1553680088.78332
+asMultiple: FALSE
+asStatic: FALSE
