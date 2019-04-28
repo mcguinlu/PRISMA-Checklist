@@ -40,12 +40,14 @@ shinyServer(function(input, output, session) {
     currSection <- which(sectionId == input$sections)
     nextSection <- currSection + 1
     updateTabsetPanel(session, "sections", selected = sectionId[[nextSection]])
+    shinyjs::runjs("document.getElementById('scrollAnchor').scrollIntoView({behavior: 'smooth'});")
   })
   observeEvent(input$previousButton, {
     sectionId <- sapply(sectionsList, function(section) section$Value)
     currSection <- which(sectionId == input$sections)
     nextSection <- currSection - 1
     updateTabsetPanel(session, "sections", selected = sectionId[[nextSection]])
+    shinyjs::runjs("document.getElementById('scrollAnchor').scrollIntoView({behavior: 'smooth'});")
   })
   # disable moving next or previous for first and last sections
   observeEvent(input$sections, {

@@ -69,7 +69,7 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
   ),
 
   br(), br(),
-
+  tags$div(id = "scrollAnchor"), # for scrolling up
   # Show questions
   #uiOutput("questions"),
   sectionsHTML,
