@@ -30,7 +30,7 @@
       "Questions": [
         {
           "Type": "radio",
-          "Label": "Prior to analyzing the complete data set, a time-stamped preregistration was posted in an independent, institutional registry for the data analysis plan.",
+          "Label": "Prior to analyzing the complete data set, a time-stamped preregistration was posted in an independent, third-party registry for the data analysis plan.",
           "AnswerType": "YesNo"
         },
         {
@@ -90,19 +90,19 @@
         },
         {
           "Type": "radio",
-          "Label": "your measures of interest (e.g., friendliness).",
+          "Label": "the measures of interest (e.g., friendliness).",
           "AnswerType": "YesNo",
           "Depends": ".ind_1 == 'Yes'"
         },
         {
           "Type": "radio",
-          "Label": "all operationalizations for your measures of interest (e.g., a questionnaire measuring friendliness).",
+          "Label": "all operationalizations for the measures of interest (e.g., a questionnaire measuring friendliness).",
           "AnswerType": "YesNo",
           "Depends": ".ind_1 == 'Yes' && .ind_9 == 'Yes'"
         },
         {
           "Type": "radio",
-          "Label": "how the data were planned to be preprocessed (e.g., transformed, cleaned, normalized, smoothed).",
+          "Label": "the data preprocessing plans (e.g., transformed, cleaned, normalized, smoothed).",
           "AnswerType": "YesNo",
           "Depends": ".ind_1 == 'Yes'"
         },
@@ -114,7 +114,7 @@
         },
         {
           "Type": "radio",
-          "Label": "the intended statistical analysis for each research question (This may require, for example, information about the sidedness of the tests, inference criteria, corrections for multiple testing, model selection criteria, prior distributions etc.).",
+          "Label": "the intended statistical analysis for each research question (this may require, for example, information about the sidedness of the tests, inference criteria, corrections for multiple testing, model selection criteria, prior distributions etc.).",
           "AnswerType": "YesNo",
           "Depends": ".ind_1 == 'Yes'"
         },
@@ -178,12 +178,12 @@
         },
         {
           "Type": "radio",
-          "Label": "your measures of interest (e.g., friendliness).",
+          "Label": "the measures of interest (e.g., friendliness).",
           "AnswerType": "YesNo"
         },
         {
           "Type": "radio",
-          "Label": "all operationalizations for your measures of interest (e.g., a questionnaire measuring friendliness).",
+          "Label": "all operationalizations for the measures of interest (e.g., a questionnaire measuring friendliness).",
           "AnswerType": "YesNo",
           "Depends": ".ind_23 == 'Yes'"
         },
