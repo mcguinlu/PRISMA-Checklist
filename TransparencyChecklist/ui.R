@@ -85,7 +85,7 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
   ##### Report menu (downloading) ----
   absolutePanel(
     dropdown(
-      h4("Generate Report"),
+      h4("Generate & Download Report"),
       pickerInput(inputId = "save.as", label = "Format",
                   choices = c("pdf", "html", "word", "rtf"),
                   multiple = FALSE, width = 'auto', inline = FALSE),
@@ -101,11 +101,11 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
                    size = "xs",
                    no_outline = FALSE)
         ), br(), br(),
-      downloadButton('report', 'Download report', class = "downbutt"),
+      downloadButton('report', 'Download', class = "downbutt"),
 
       icon = icon("file-alt"), up = TRUE,
       tooltip = tooltipOptions(title = "Click here to create and download report", placement = "top"),
-      style = "unite", label = "Report",
+      style = "unite", label = "Generate & Download Report",
       size = "lg", inputId = "generatereport", width = "27vw", class = "fixedButton"),
    bottom = "2.5%", left = "2%", fixed = TRUE, width = "auto"),
 
