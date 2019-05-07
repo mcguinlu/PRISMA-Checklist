@@ -6,9 +6,11 @@ library(shinyFeedback)
 library(shinyanimate)
 library(shinythemes)
 library(shinycssloaders)
+library(bsplus)
 library(jsonlite)
 library(RCurl) # for checking whether url.exists
 library(digest)
+library(knitr)
 library(markdown)
 
 source("R/helpers.R")

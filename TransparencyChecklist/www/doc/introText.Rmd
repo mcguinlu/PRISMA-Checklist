@@ -19,4 +19,5 @@ at the bottom of the page. The checklist does not save your responses centrally.
 
 \* Reference to the checklist
 
-\*\* Feedback and recommendations for an update of the checklist can be provided here: [https://forms.gle/raN7q1ucpov5sX316](https://forms.gle/raN7q1ucpov5sX316) or at [https://github.com/BalazsAczel/TransparencyChecklist/issues](https://github.com/BalazsAczel/TransparencyChecklist/issues)
+\*\* Feedback and recommendations for an update of the checklist can be provided here: [https://forms.gle/raN7q1ucpov5sX316](https://forms.gle/raN7q1ucpov5sX316)
+

@@ -104,9 +104,9 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
 
       icon = icon("file-alt"), up = TRUE,
       tooltip = tooltipOptions(title = "Click here to create and download report", placement = "left"),
-      style = "unite", label = "Generate & Download Report",
-      size = "lg", inputId = "generatereport", width = "27vw", class = "fixedButton"),
-   bottom = "2.5%", right = "2%", fixed = TRUE, width = "auto"),
+      style = "unite", label = "Generate Report",
+      size = "lg", inputId = "generatereport", width = "20vw", class = "fixedButton"),
+   bottom = "2.5%", right = "3.5%", fixed = TRUE, width = "auto"),
 
   # Open window for a preview
   shinyBS::bsModal(id = "previewer", title = "Preview", trigger = "preview", size = "large",
@@ -126,7 +126,12 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
   br(), br(),
 
   # info modal
-  shinyBS::bsModal(id = "intro", title = "About", trigger = "triggerIntro", includeMarkdown("data/introText.Rmd")),
+  shinyBS::bsModal(id = "intro", title = "About", trigger = "triggerIntro", 
+                   includeMarkdown("www/doc/introText.Rmd"),
+                   br(),
+                   tags$a(tags$img(src = "img/GitHub-Mark-32px.png"), 
+                          href = "https://github.com/BalazsAczel/TransparencyChecklist", 
+                          target = "_blank")),
   absolutePanel(
     actionBttn(inputId = "triggerIntro", label = "About", icon = icon("info-circle")),
     bottom = "2.5%", left = "2%", fixed = TRUE, width = "auto"
