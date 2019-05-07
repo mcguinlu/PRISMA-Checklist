@@ -36,7 +36,6 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
     shiny::icon("user")
   ),
 
-
   #### Application outline ----
   # Application title
   headerPanel(column(12, "TRANSPARENCY CHECKLIST (full, 36 items)", align = "center"), windowTitle = "Transparency Checklist"),
@@ -104,7 +103,7 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
       downloadButton('report', 'Download', class = "downbutt"),
 
       icon = icon("file-alt"), up = TRUE,
-      tooltip = tooltipOptions(title = "Click here to create and download report", placement = "top"),
+      tooltip = tooltipOptions(title = "Click here to create and download report", placement = "left"),
       style = "unite", label = "Generate & Download Report",
       size = "lg", inputId = "generatereport", width = "27vw", class = "fixedButton"),
    bottom = "2.5%", right = "2%", fixed = TRUE, width = "auto"),
@@ -124,9 +123,14 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
                      trigger = "manual",
                      placement = "right"),
   uiOutput("trigger"), # this trigger displays or hides the explaining tooltip
-  br(), br()
+  br(), br(),
 
-
+  # info modal
+  shinyBS::bsModal(id = "intro", title = "About", trigger = "triggerIntro", includeMarkdown("data/introText.Rmd")),
+  absolutePanel(
+    actionBttn(inputId = "triggerIntro", label = "About", icon = icon("info-circle")),
+    bottom = "2.5%", left = "2%", fixed = TRUE, width = "auto"
+  )
   # temporary (for debugging): showing the current status of the answers
   # ,br(),
   # verbatimTextOutput("answers")

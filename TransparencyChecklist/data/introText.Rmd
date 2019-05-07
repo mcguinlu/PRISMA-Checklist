@@ -1,0 +1,22 @@
+---
+title: ''
+output: html_document
+---
+
+This checklist was developed for social and behavioral scientists who conduct and report confirmatory research on primary data.
+Nevertheless, several of the checklist items may also be relevant for other approaches and disciplines.
+For purely exploratory research, only items 14-24 and 26-36 items of the checklist apply. 
+
+
+Please respond to each item regarding your study. If necessary, you can provide an explanation to your response at the
+end of each section.
+
+
+Upon completion, you can generate and save a transparency report for your study by pressing the “Generate Report”
+at the bottom of the page. The checklist does not save your responses centrally.
+
+-----
+
+\* Reference to the checklist
+
+\*\* Feedback and recommendations for an update of the checklist can be provided here: [https://forms.gle/raN7q1ucpov5sX316](https://forms.gle/raN7q1ucpov5sX316) or at [https://github.com/BalazsAczel/TransparencyChecklist/issues](https://github.com/BalazsAczel/TransparencyChecklist/issues)
