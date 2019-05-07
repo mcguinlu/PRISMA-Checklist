@@ -14,6 +14,7 @@ shinyServer(function(input, output, session) {
   #### Send header and questions to UI ----
   output$currentTime <- renderText({
     #invalidateLater(1000, session)
+    shinyBS::toggleModal(session, "intro")
     paste("Created on: ", format(Sys.time(), '%d %B, %Y'))
   })
   

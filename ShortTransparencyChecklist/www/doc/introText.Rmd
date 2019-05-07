@@ -5,7 +5,7 @@ output: html_document
 
 This checklist was developed for social and behavioral scientists who conduct and report confirmatory research on primary data.
 Nevertheless, several of the checklist items may also be relevant for other approaches and disciplines.
-For purely exploratory research, only items 14-24 and 26-36 of the checklist apply. 
+For purely exploratory research, only the last 5 items of the short checklist apply. 
 
 
 Please respond to each item regarding your study. If necessary, you can provide an explanation to your response at the
