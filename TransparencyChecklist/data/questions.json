@@ -78,7 +78,7 @@
         },
         {
           "Type": "radio",
-          "Label": "all procedures for ensuring that participants and experimenters were kept naive (blinded) to potentially biasing information.",
+          "Label": "any procedures for ensuring that participants, experimenters, and data-analysts were kept naive (blinded) to potentially biasing information.",
           "AnswerType": "YesNo",
           "Depends": ".ind_1 == 'Yes'"
         },
@@ -168,7 +168,7 @@
         },
         {
           "Type": "radio",
-          "Label": "how participants, experimenters, and data-analysts were kept naive to potentially biasing information.",
+          "Label": "whether (and, if so, how) participants, experimenters, and data-analysts were kept naive to potentially biasing information.",
           "AnswerType": "YesNo"
         },
         {
@@ -207,7 +207,7 @@
       "Questions": [
         {
           "Type": "radio",
-          "Label": "distinguishes sharply between \"confirmatory\" (i.e., prespecified) and \"exploratory\" (i.e., not prespecified) analyses.",
+          "Label": "distinguishes explicitly between \"confirmatory\" (i.e., prespecified) and \"exploratory\" (i.e., not prespecified) analyses.",
           "AnswerType": "YesNo"
         },
         {
@@ -275,9 +275,7 @@
         },
         {
           "Type": "radio",
-          "Label": "The manuscript includes a statement concerning the availability and location of all research items, including data, materials, and code relevant to your study (such as the TOP statement by Aalbersberg et al., 2018; ",
-          "href": "https://osf.io/sm78t/",
-          "LabelEnd": ").",
+          "Label": "The manuscript includes a statement concerning the availability and location of all research items, including data, materials, and code relevant to the study.",
           "AnswerType": "YesNo"
         },
         {
