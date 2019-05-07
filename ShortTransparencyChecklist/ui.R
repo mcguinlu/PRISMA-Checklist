@@ -107,7 +107,7 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
       tooltip = tooltipOptions(title = "Click here to create and download report", placement = "top"),
       style = "unite", label = "Generate & Download Report",
       size = "lg", inputId = "generatereport", width = "27vw", class = "fixedButton"),
-   bottom = "2.5%", left = "2%", fixed = TRUE, width = "auto"),
+   bottom = "2.5%", right = "2%", fixed = TRUE, width = "auto"),
   
   # Open window for a preview
   shinyBS::bsModal(id = "previewer", title = "Preview", trigger = "preview", size = "large",
