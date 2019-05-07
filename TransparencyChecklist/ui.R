@@ -110,11 +110,11 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
 
   # Open window for a preview
   shinyBS::bsModal(id = "previewer", title = "Preview", trigger = "preview", size = "large",
-                   uiOutput("generatePreview")),
+                   shinycssloaders::withSpinner(uiOutput("generatePreview"))),
 
   # Open window for a code
   shinyBS::bsModal(id = "codeshower", title = "Code", trigger = "showcode", size = "large",
-                   verbatimTextOutput("code")),
+                   shinycssloaders::withSpinner(verbatimTextOutput("code"))),
 
   # Show tooltip which says that the download is not ready
   shinyBS::bsTooltip(id = "report",

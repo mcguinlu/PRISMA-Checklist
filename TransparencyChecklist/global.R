@@ -5,6 +5,7 @@ library(shinyBS)
 library(shinyFeedback)
 library(shinyanimate)
 library(shinythemes)
+library(shinycssloaders)
 library(jsonlite)
 library(RCurl) # for checking whether url.exists
 library(digest)
