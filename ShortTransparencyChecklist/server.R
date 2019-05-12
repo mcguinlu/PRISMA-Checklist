@@ -59,15 +59,15 @@ shinyServer(function(input, output, session) {
     sectionId <- sapply(sectionsList, function(section) section$Value)
     currSection <- which(sectionId == input$sections)
     if(currSection == 1){
-      shinyjs::disable("previousButton")
+      shinyjs::hide("previousButton")
     } else{
-      shinyjs::enable("previousButton")
+      shinyjs::show("previousButton")
     }
     
     if(currSection == length(sectionId)){
-      shinyjs::disable("nextButton")
+      shinyjs::hide("nextButton")
     } else{
-      shinyjs::enable("nextButton")
+      shinyjs::show("nextButton")
     }
   })
 
