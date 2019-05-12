@@ -76,9 +76,11 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
 
   # Switching between sections
   fluidRow(column(2),
-           column(2, actionButton("previousButton", "Go to previous section", icon = icon("arrow-circle-left"))),
+           column(2, align = "center",
+                  actionButton("previousButton", "Go to previous section", icon = icon("arrow-circle-left"))),
            column(4),
-           column(2, actionButton("nextButton", "Go to next section", icon = icon("arrow-circle-right"))),
+           column(2, align = "center",
+                  actionButton("nextButton", "Go to next section", icon = icon("arrow-circle-right"))),
            column(2)
   ),
   br(), br(),
