@@ -131,7 +131,7 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
   br(), br(),
   
   # info modal
-  shinyBS::bsModal(id = "intro", title = "About", trigger = "triggerIntro",
+  shinyBS::bsModal(id = "intro", title = "About", trigger = "triggerIntro", size = "large",
                    includeMarkdown("www/doc/introText.Rmd"),
                    br(),
                    tags$a(tags$img(src = "img/GitHub-Mark-32px.png"),

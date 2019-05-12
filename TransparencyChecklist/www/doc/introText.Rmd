@@ -3,17 +3,23 @@ title: ''
 output: html_document
 ---
 
-This checklist was developed for social and behavioral scientists who conduct and report confirmatory research on primary data.
-Nevertheless, several of the checklist items may also be relevant for other approaches and disciplines.
-For purely exploratory research, only items 14-24 and 26-36 of the checklist apply. 
+### What is the Transparency Checklist?
+
+The Transparency checklist is a comprehensive checklist that social and behavioral scientists can use to improve and declare the transparency of their research.  This checklist was developed for social and behavioral scientists who conduct and report confirmatory research on primary data. Nevertheless, several of the checklist items may also be relevant for other approaches and disciplines. For purely exploratory research, only items 14-24 and 26-36 of the checklist apply. 
 
 
-Please respond to each item regarding your study. If necessary, you can provide an explanation to your response at the
-end of each section.
+### How to use it?
 
+- Please respond to each item of the checklist regarding your study. If necessary, you can provide an explanation for your response at the end of each section. 
 
-Upon completion, you can generate and save a transparency report for your study by pressing the “Generate Report”
-at the bottom of the page. The checklist does not save your responses centrally.
+- When the question refers to your manuscript, it includes all supplementary materials and appendices as well.
+After all the questions have been answered, you can generate a transparency report for your study by pressing the “Generate Report” at the bottom of the page. 
+
+- Save your transparency report on your computer. Note, that after you download your report, your responses on the checklist won’t be saved by our webpage.
+
+- Upload your transparency report to a public repository.
+
+- This way, when you write up your manuscript you can add a direct link to it in your manuscript with the following sentence… MISSING on HOW TO CITE OUR work
 
 -----
 
