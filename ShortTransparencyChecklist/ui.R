@@ -39,7 +39,8 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
   
   #### Application outline ----
   # Application title
-  headerPanel(column(12, "TRANSPARENCY CHECKLIST (short, 12 items)", align = "center"), windowTitle = "Transparency Checklist"),
+  headerPanel(column(12, "CREATING TRANSPARENCY CHECKLIST (short, 12 items)", align = "center"),
+              windowTitle = "Transparency Checklist"),
 
   br(), br(), br(), br(), br(),
   
