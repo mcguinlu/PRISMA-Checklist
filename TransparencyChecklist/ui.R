@@ -40,16 +40,15 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
   # Application title
   headerPanel(column(12, "CREATING TRANSPARENCY CHECKLIST (full, 36 items)", align = "center"),
               windowTitle = "Transparency Checklist"),
-
-  br(), br(), br(), br(), br(),
-
+  
   fluidRow(column(1),
            column(10, tags$a("I prefer to fill out the short (12-item) checklist.",
                              href="https://kucharssim.shinyapps.io/TransparencyChecklistShort/",
-                             target="_blank")),
+                             target="_blank"), align = "center"),
            column(1)
   ),
-
+  br(),
+  
   # The header (basic information about the paper and authors)
   fluidRow(
     column(1),
