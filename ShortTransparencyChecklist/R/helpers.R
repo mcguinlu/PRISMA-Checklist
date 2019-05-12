@@ -105,7 +105,8 @@ switchButtons <- function(ind){
   # switch between different input types
   switch (ind$Type,
     "select"    = pickerInput(inputId = ind$Name, label = "", choices = c("", answers),
-                              selected = NULL, multiple = FALSE),
+                              selected = NULL, multiple = FALSE,
+                              options = pickerOptions(noneSelectedText = "Please select an option")),
     "radio"     = radioButtons(inputId = ind$Name, label = "", choices = answers, selected = 0,
                                inline = TRUE),
     "textInput" = textInput(inputId = ind$Name, label = ind$Label, value = ind$AnswerType),
