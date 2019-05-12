@@ -109,7 +109,7 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
       style = "unite", label = "Generate Report",
       size = "lg", inputId = "generatereport", width = "20vw", class = "fixedButton"),
     bottom = "2.5%", left = "50%", fixed = TRUE, width = "auto",
-    style = "transform: translate(-50%, +0%);"),
+    style = "transform: translate(-50%, +0%); z-index: 1000;"),
   
   # Open window for a preview
   shinyBS::bsModal(id = "previewer", title = "Preview", trigger = "preview", size = "large",
