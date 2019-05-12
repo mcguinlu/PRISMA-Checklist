@@ -107,7 +107,8 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
       tooltip = tooltipOptions(title = "Click here to create and download report", placement = "left"),
       style = "unite", label = "Generate Report",
       size = "lg", inputId = "generatereport", width = "20vw", class = "fixedButton"),
-   bottom = "2.5%", right = "3.5%", fixed = TRUE, width = "auto"),
+   bottom = "2.5%", left = "50%", fixed = TRUE, width = "auto",
+   style = "transform: translate(-50%, +0%);"),
 
   # Open window for a preview
   shinyBS::bsModal(id = "previewer", title = "Preview", trigger = "preview", size = "large",
@@ -135,7 +136,7 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
                           target = "_blank")),
   absolutePanel(
     actionBttn(inputId = "triggerIntro", label = "About", icon = icon("info-circle")),
-    bottom = "2.5%", left = "2%", fixed = TRUE, width = "auto"
+    top = "3%", left = "2%", fixed = TRUE, width = "auto"
   )
   # temporary (for debugging): showing the current status of the answers
   # ,br(),
