@@ -54,7 +54,8 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
   fluidRow(
     column(1),
     column(10,
-      wellPanel(h4(textOutput("currentTime")), br(), headHTML)),#uiOutput("head"))),
+      #wellPanel(h4(textOutput("currentTime")), br(), headHTML)),
+      wellPanel(headHTML)),
     column(1)
   ),
   

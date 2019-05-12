@@ -12,10 +12,14 @@ library(shiny)
 shinyServer(function(input, output, session) {
   
   #### Send header and questions to UI ----
-  output$currentTime <- renderText({
-    #invalidateLater(1000, session)
+  # output$currentTime <- renderText({
+  #   #invalidateLater(1000, session)
+  #   shinyBS::toggleModal(session, "intro")
+  #   paste("Created on: ", format(Sys.time(), '%d %B, %Y'))
+  # })
+  
+  observe({
     shinyBS::toggleModal(session, "intro")
-    paste("Created on: ", format(Sys.time(), '%d %B, %Y'))
   })
   
   # Deprecated rendering of sections (now created in global.R and passed in ui directly)
