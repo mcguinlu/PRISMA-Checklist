@@ -5,26 +5,19 @@ output: html_document
 
 ### What is the Transparency Checklist?
 
-The Transparency checklist is a comprehensive checklist that social and behavioral scientists can use to improve and declare the transparency of their research.  This checklist was developed for social and behavioral scientists who conduct and report confirmatory research on primary data. Nevertheless, several of the checklist items may also be relevant for other approaches and disciplines. For purely exploratory research, only the last 5 items of the short checklist apply. 
+The Transparency Checklist is a comprehensive checklist that researchers can use to improve and document the transparency of their research. This checklist was developed for social and behavioral scientists who conduct and report confirmatory research on primary data. Nevertheless, several of the checklist items may also be relevant for other approaches and disciplines. For purely exploratory research, only the last 5 items of this short checklist apply. 
+
 
 ### How to use it?
 
-- Please respond to each item of the checklist regarding your study. If necessary, you can provide an explanation for your response at the end of each section. 
-
-- When the question refers to your manuscript, it includes all supplementary materials and appendices as well.
-After all the questions have been answered, you can generate a transparency report for your study by pressing the “Generate Report” at the bottom of the page. 
-
-- Save your transparency report on your computer. Note, that after you download your report, your responses on the checklist won’t be saved by our webpage.
-
-- Upload your transparency report to a public repository.
-
-- This way, when you write up your manuscript you can add a direct link to it in your manuscript with the following sentence… MISSING on HOW TO CITE OUR work
+- The checklist refers to a single study of interest.
+- Please respond to each checklist item. If necessary, you can provide an explanation at the end of each section. 
+- When the question refers to your manuscript, this includes all supplementary materials and appendices that are relevant to the study of interest.
+- After all the questions have been answered, you can generate a transparency report for your study by pressing the button labeled GENERATE REPORT at the bottom of the page. 
+- Save your transparency report on your computer. Note that after you download your report, your responses on the checklist will not be saved by our webpage.
+- Upload your transparency report to a public repository. 
+- You can cite the Transparency Checklist as follows: REF comes here
 
 -----
 
-\* Reference to the checklist
-
-\*\* Feedback and recommendations for an update of the checklist can be provided here: [https://forms.gle/raN7q1ucpov5sX316](https://forms.gle/raN7q1ucpov5sX316)
-
-
-
+\* Feedback and recommendations for an update of the checklist can be provided here: [https://forms.gle/raN7q1ucpov5sX316](https://forms.gle/raN7q1ucpov5sX316)
