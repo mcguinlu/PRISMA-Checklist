@@ -16,7 +16,8 @@ The Transparency Checklist is a comprehensive checklist that researchers can use
 - After all the questions have been answered, you can generate a transparency report for your study by pressing the button labeled GENERATE REPORT at the bottom of the page. 
 - Save your transparency report on your computer. Note that after you download your report, your responses on the checklist will not be saved by our webpage.
 - Upload your transparency report to a public repository. 
-- You can cite the Transparency Checklist as follows: REF comes here
+
+<!-- - You can cite the Transparency Checklist as follows: REF comes here -->
 
 -----
 
