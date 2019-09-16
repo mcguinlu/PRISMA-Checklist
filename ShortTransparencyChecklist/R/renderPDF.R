@@ -83,9 +83,9 @@ Link to Project Repository: [&linkToRepository](&linkToRepository)
   # We create sections of the rmd file
   sections <- sapply(sectionsList, composeSections, answers = answers)
   
-  references <- renderReferences()
+  #references <- renderReferences()
   # combine everything together
-  rmd <- paste(c(headYaml, sections, references), collapse = "\n")
+  rmd <- paste(c(headYaml, sections), collapse = "\n")
   
   
   rmd
