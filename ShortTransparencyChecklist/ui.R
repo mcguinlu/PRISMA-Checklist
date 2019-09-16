@@ -44,7 +44,7 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
   
   fluidRow(column(1),
            column(10, tags$a("I prefer to fill out the full (36-item) checklist.", 
-                             href="https://kucharssim.shinyapps.io/TransparencyChecklist/",
+                             href="http://www.shinyapps.org/apps/TransparencyChecklist/",
                              target="_blank"), align = "center"),
            column(1)
   ),
