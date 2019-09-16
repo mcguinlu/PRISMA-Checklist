@@ -54,7 +54,7 @@ composePDF <- function(answers = NULL, sectionsList = NULL, headList = NULL, ans
   headYaml <-
 "---
 title: '&studyTitle'
-subtitle: 'Transparency Report (full, 36 items)'
+subtitle: 'Transparency Report 1.0 (full, 36 items)'
 author: '&authorNames'
 date: '&date'
 output: pdf_document

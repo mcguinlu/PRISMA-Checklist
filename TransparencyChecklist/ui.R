@@ -38,8 +38,8 @@ shinyUI(fluidPage(theme = shinytheme("cerulean"),
 
   #### Application outline ----
   # Application title
-  headerPanel(column(12, "CREATING TRANSPARENCY CHECKLIST (full, 36 items)", align = "center"),
-              windowTitle = "Transparency Checklist"),
+  headerPanel(column(12, "CREATING TRANSPARENCY CHECKLIST 1.0 (full, 36 items)", align = "center"),
+              windowTitle = "Transparency Checklist 1.0"),
   
   fluidRow(column(1),
            column(10, tags$a("I prefer to fill out the short (12-item) checklist.",
