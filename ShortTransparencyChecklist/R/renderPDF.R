@@ -83,9 +83,9 @@ Link to Project Repository: [&linkToRepository](&linkToRepository)
   # We create sections of the rmd file
   sections <- sapply(sectionsList, composeSections, answers = answers)
   
-  #references <- renderReferences()
+  references <- renderReferences()
   # combine everything together
-  rmd <- paste(c(headYaml, sections), collapse = "\n")
+  rmd <- paste(c(headYaml, sections, references), collapse = "\n")
   
   
   rmd
@@ -214,13 +214,6 @@ renderReferences <- function(){
   "
 ## References
  
-Aalbersberg, I. J., Appleyard, T., Brookhart, S., Carpenter, T., Clarke, M., Curry, S., ... & Freedman, L. (2018).
-Making science transparent by default: Introducing the TOP Statement. [https://osf.io/sm78t](https://osf.io/sm78t)  
-
-
-Simons, D. J., Shoda, Y., & Lindsay, D. S. (2017). 
-Constraints on generality (COG): A proposed addition to all empirical papers.
-*Perspectives on Psychological Science*, *12*(6), 1123-1128.
-[DOI: 10.1177/1745691617708630](https://doi.org/10.1177/1745691617708630), [https://psyarxiv.com/w9e3r/](https://psyarxiv.com/w9e3r/)
+Aczel, B., Szaszi, B., Sarafoglou, A. Kekecs, Z., Kucharský, Š., Benjamin, D., ... & Wagenmakers, E.-J. (2019). A consensus-based transparency checklist. *Nature Human Behaviour*, 1--3. doi:10.1038/s41562-019-0772-6
 "
 }
