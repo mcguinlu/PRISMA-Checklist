@@ -28,7 +28,7 @@
           "Type": "text",
           "Domain": "Abstract", 
           "Qnumber": "2",
-          "Label": "Please complete the PRISMA-A checklist"
+          "Label": "Please complete the PRISMA-A checklist."
         },
         {
           "Type":"break"
@@ -111,6 +111,250 @@
           "Qnumber": "10b",
           "Label": "List and define all other variables for which data were sought (e.g. participant and intervention characteristics, funding sources). Describe any assumptions made about any missing or unclear information.",
           "AnswerType": "YesNo"
+        },
+                {
+          "Type": "radio",
+          "Domain": "Study risk of bias assessment",
+          "Qnumber": "11",
+          "Label": "Specify the methods used to assess risk of bias in the included studies. At a minimum, describe the tool(s) used, and state how many reviewers assessed each study and whether they worked independently.",
+          "AnswerType": "YesNo"
+        },
+                        {
+          "Type": "radio",
+          "Domain": "Effect measures",
+          "Qnumber": "12",
+          "Label": "Specify for each outcome the effect measure(s) (e.g. risk ratio, mean difference) used in the synthesis or presentation of results.",
+          "AnswerType": "YesNo"
+        },
+                {
+          "Type": "radio",
+          "Domain": "Results of syntheses",
+          "Qnumber": "13a",
+          "Label": "Describe the processes used to determine which studies are eligible for each synthesis.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "",
+          "Qnumber": "13b",
+          "Label": "Describe any methods required to prepare the data for synthesis, such as handling of missing summary statistics, or data conversions.",
+          "AnswerType": "YesNo"
+        },
+                {
+          "Type": "radio",
+          "Domain": "",
+          "Qnumber": "13c",
+          "Label": "Describe any methods used to tabulate or visually display results of individual studies and syntheses.",
+          "AnswerType": "YesNo"
+        },
+                {
+          "Type": "radio",
+          "Domain": "",
+          "Qnumber": "13d",
+          "Label": "Describe any methods used to synthesize results and provide a rationale for the choice(s). If meta-analysis was performed, describe the model(s), method(s) to identify the presence and extent of statistical heterogeneity, and software package(s) used.",
+          "AnswerType": "YesNo"
+        },
+                        {
+          "Type": "radio",
+          "Domain": "",
+          "Qnumber": "13e",
+          "Label": "Describe any methods used to explore possible causes of heterogeneity among study results.",
+          "AnswerType": "YesNo"
+        },
+                        {
+          "Type": "radio",
+          "Domain": "",
+          "Qnumber": "13f",
+          "Label": "Describe any sensitivity analyses used to assess robustness of the synthesized results.",
+          "AnswerType": "YesNo"
+        },
+        
+                                {
+          "Type": "radio",
+          "Domain": "Effect measures",
+          "Qnumber": "14",
+          "Label": "Describe any methods used to assess the risk of bias due to missing results in a synthesis (arising from reporting biases).",
+          "AnswerType": "YesNo"
+        },
+                                {
+          "Type": "radio",
+          "Domain": "Certainty assessment",
+          "Qnumber": "15",
+          "Label": "Describe any methods used to assess the certainty (or confidence) in the body of evidence for an outcome.",
+          "AnswerType": "YesNo"
+        },
+        
+        {
+          "Type":"break"
+        },
+                {
+          "Type": "text",
+          "Domain": "RESULTS",
+          "Label": ""
+        },
+        {
+          "Type": "radio",
+          "Domain": "Study selection",
+          "Qnumber": "16a",
+          "Label": "Describe the results of the search and selection process, from the number of records identified in the search to the number of studies included in the review, ideally using a flow diagram.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "",
+          "Qnumber": "16b",
+          "Label": "Provide citations of studies that met many but not all inclusion criteria (‘near-misses’) and explain why they were excluded.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "Study characteristics",
+          "Qnumber": "17",
+          "Label": "Present the characteristics and citation(s) of each included study.",
+          "AnswerType": "YesNo"
+        },
+                {
+          "Type": "radio",
+          "Domain": "Risk of bias in studies",
+          "Qnumber": "18",
+          "Label": "Present assessments of risk of bias for each included study.",
+          "AnswerType": "YesNo"
+        },
+                        {
+          "Type": "radio",
+          "Domain": "Results of individual studies",
+          "Qnumber": "19",
+          "Label": "For all outcomes, present, for each study: (a) summary statistics for each group (where appropriate) and (b) an effect estimate and confidence/credible interval, ideally using structured tables or plots.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "Results of syntheses",
+          "Qnumber": "20a",
+          "Label": "For each synthesis, summarise the characteristics and risk of bias among contributing studies.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "",
+          "Qnumber": "20b",
+          "Label": "Present results of all syntheses conducted. If meta-analysis was done, present for each the summary estimate and its precision (e.g. confidence/credible interval) and measures of statistical heterogeneity. If comparing groups, describe the direction of the effect.",
+          "AnswerType": "YesNo"
+        },
+                {
+          "Type": "radio",
+          "Domain": "",
+          "Qnumber": "20c",
+          "Label": "Present results of any investigations of possible causes of heterogeneity among study results.",
+          "AnswerType": "YesNo"
+        },
+                {
+          "Type": "radio",
+          "Domain": "",
+          "Qnumber": "20d",
+          "Label": "Present results of any sensitivity analyses used to assess the robustness of the synthesized results.",
+          "AnswerType": "YesNo"
+        },
+                        {
+          "Type": "radio",
+          "Domain": "Certainty of evidence",
+          "Qnumber": "21",
+          "Label": "Present assessments of the certainty (or confidence) in the body of evidence for an outcome that were conducted.",
+          "AnswerType": "YesNo"
+        },
+                                {
+          "Type": "radio",
+          "Domain": "Risk of reporting biases in syntheses",
+          "Qnumber": "22",
+          "Label": "Present assessments of the risk of bias due to missing results in a synthesis that were conducted.",
+          "AnswerType": "YesNo"
+        },
+        
+        {
+          "Type":"break"
+        },
+        {
+          "Type": "text",
+          "Domain": "DISCUSSION",
+          "Label": ""
+        },
+                 {
+          "Type": "radio",
+          "Domain": "Discussion",
+          "Qnumber": "23a",
+          "Label": "Provide a general interpretation of the results in the context of other evidence.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "",
+          "Qnumber": "23b",
+          "Label": "Discuss any limitations of the evidence included in the review.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "",
+          "Qnumber": "23c",
+          "Label": "Discuss any limitations of the review processes used.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "",
+          "Qnumber": "23d",
+          "Label": "Discuss implications of the results for practice, policy, and future research.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type":"break"
+        },
+        {
+          "Type": "text",
+          "Domain": "OTHER INFORMATION",
+          "Label": ""
+        },
+         {
+          "Type": "radio",
+          "Domain": "Registration and protocol",
+          "Qnumber": "24a",
+          "Label": "Provide registration information for the review, including register name and registration number, or state that the review was not registered.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "",
+          "Qnumber": "24b",
+          "Label": "Indicate where the review protocol can be accessed, or state that a protocol is not available.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "",
+          "Qnumber": "24c",
+          "Label": "Describe and explain any amendments to information provided at registration or in the protocol.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "Support",
+          "Qnumber": "25",
+          "Label": "Describe sources of financial or non-financial support for the review, and the role of the funders or sponsors in the review.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "Declaration of interests",
+          "Qnumber": "26",
+          "Label": "Declare any competing interests of review authors.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "Data sharing",
+          "Qnumber": "27",
+          "Label": "Report which of the following are publicly available and where they can be found: template data collection forms; data extracted from included studies; data used for all analyses; analytic code; any other materials used in the review.",
+          "AnswerType": "YesNo"
         }
       ]
     },
@@ -143,7 +387,7 @@
           "Type": "radio",
           "Domain": "Objectives",
           "Qnumber": "2",
-          "Label": "(2) Provide an explicit statement of the question(s) the review addresses.",
+          "Label": "Provide an explicit statement of the question(s) the review addresses.",
           "AnswerType": "YesNo"
         },
         {
