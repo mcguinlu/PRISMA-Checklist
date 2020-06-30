@@ -1,0 +1,257 @@
+{  "Sections" : {
+    "PRISMA MAIN CHECKLIST": {
+      "Name": "PRISMA MAIN CHECKLIST",
+      "Indicator": "m",
+      "Value": "PRISMA",
+      "Questions": [
+        {
+          "Type": "text",
+          "Domain": "TITLE",
+          "Label": ""
+        },
+        {
+          "Type": "radio",
+          "Domain": "Title",
+          "Qnumber": "1",
+          "Label": "Identify the report as a systematic review or a systematic review with meta-analysis in the title.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type":"break"
+        },
+        {
+          "Type": "text",
+          "Domain": "ABSTRACT",
+          "Label": ""
+        },
+        {
+          "Type": "text",
+          "Domain": "Abstract", 
+          "Qnumber": "2",
+          "Label": "Please complete the PRISMA-A checklist"
+        },
+        {
+          "Type":"break"
+        },
+        {
+          "Type": "text",
+          "Domain": "INTRODUCTION",
+          "Label": ""
+        },
+        {
+          "Type": "radio",
+          "Domain": "Rationale",
+          
+          "Qnumber": "3",
+          "Label": "Describe the rationale for the review in the context of existing knowledge.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "Objectives",
+          
+          "Qnumber": "4",
+          "Label": "Provide an explicit statement of the question(s) the review addresses.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type":"break"
+        },
+        {
+          "Type": "text",
+          "Domain": "METHODS",
+          "Label": ""
+        },
+        {
+          "Type": "radio",
+          "Domain": "Eligibility criteria",
+          "Qnumber": "5",
+          "Label": "Specify the inclusion and exclusion criteria for the review.",
+          "AnswerType": "YesNo"
+
+        },
+        {
+          "Type": "radio",
+          "Domain": "Information sources",
+          "Qnumber": "6",
+          "Label": "Specify all databases, registers, websites, organisations, individuals, reference lists and other sources searched or consulted to identify studies. Specify the date when each source was last searched or consulted.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "Search strategy",
+          "Qnumber": "7",
+          "Label": "Present the full search strategies for all databases, registers and websites, including any filters and limits used.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "Selection process",
+          "Qnumber": "8",
+          "Label": "Specify the methods used to decide whether a study met the inclusion criteria of the review. At a minimum, state how many reviewers screened each record and each report retrieved, whether they worked independently, and whether automation tools were used (and if so, how).",
+          "AnswerType": "YesNo"
+        },
+       {
+          "Type": "radio",
+          "Domain": "Data collection process",
+          "Qnumber": "9",
+          "Label": "Specify the methods used to collect data from reports. At a minimum, state how many reviewers collected data from each report, whether they worked independently, and any processes for obtaining and confirming data from study investigators.",
+          "AnswerType": "YesNo"
+        },
+               {
+          "Type": "radio",
+          "Domain": "Data items",
+          "Qnumber": "10a",
+          "Label": "List and define all outcomes for which data were sought. Specify whether all results that were compatible with each outcome domain in each study were sought (e.g. for all measures, time points, analyses), and if not, the methods used to decide which results to collect.",
+          "AnswerType": "YesNo"
+        },
+               {
+          "Type": "radio",
+          "Domain": "",
+          "Qnumber": "10b",
+          "Label": "List and define all other variables for which data were sought (e.g. participant and intervention characteristics, funding sources). Describe any assumptions made about any missing or unclear information.",
+          "AnswerType": "YesNo"
+        }
+      ]
+    },
+    "ABSTRACT" : {
+      "Name": "PRISMA ABSTRACT CHECKLIST",
+      "Indicator": "a",
+      "Value": "PRISMA-A",
+      "Questions": [
+        {
+          "Type": "text",
+          "Domain": "TITLE",
+          "Label": ""
+        },
+        {
+          "Type": "radio",
+          "Domain": "Title",
+          "Qnumber": "1",
+          "Label": "Identify the report as a systematic review or a systematic review with meta-analysis in the title.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type":"break"
+        },
+        {
+          "Type": "text",
+          "Domain": "BACKGROUND",
+          "Label": ""
+        },
+        {
+          "Type": "radio",
+          "Domain": "Objectives",
+          "Qnumber": "2",
+          "Label": "(2) Provide an explicit statement of the question(s) the review addresses.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type":"break"
+        },
+                {
+          "Type": "text",
+          "Domain": "METHODS",
+          "Label": ""
+        },
+        {
+          "Type": "radio",
+          "Domain": "Eligibility criteria",
+          "Qnumber": "3",
+          "Label": "Specify the inclusion and exclusion criteria for the review.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "Information sources",
+          "Qnumber": "4",
+          "Label": "Specify the information sources used to identify studies and the date when each was last searched.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "Risk of bias and certainty",
+          "Qnumber": "5",
+          "Label": "Specify the methods used to assess risk of bias in the included studies and certainty (or confidence) in the body of evidence for an outcome.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "Synthesis of results",
+          "Qnumber": "6",
+          "Label": "Specify the methods used to present and synthesize results.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type":"break"
+        },
+                {
+          "Type": "text",
+          "Domain": "RESULTS",
+          "Label": ""
+        },
+        {
+          "Type": "radio",
+          "Domain": "Included studies",
+          "Qnumber": "7",
+          "Label": "Give the total number of included studies and participants, and summarise relevant characteristics of studies.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "Synthesis of results",
+          "Qnumber": "8",
+          "Label": "Present results for main outcomes. If meta-analysis was done, report the summary estimate, confidence/credible interval and the number of included studies and participants for each. If comparing groups, indicate the direction of the effect.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type":"break"
+        },
+                {
+          "Type": "text",
+          "Domain": "DISCUSSION",
+          "Label": ""
+        },
+        {
+          "Type": "radio",
+          "Domain": "Limitations of evidence",
+          "Qnumber": "9",
+          "Label": "Provide a brief summary of the limitations of the evidence included in the review.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "Interpretation",
+          "Qnumber": "10",
+          "Label": "Provide a general interpretation of the results and important implications.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type":"break"
+        },
+                {
+          "Type": "text",
+          "Domain": "OTHER",
+          "Label": ""
+        },
+        {
+          "Type": "radio",
+          "Domain": "Funding",
+          "Qnumber": "11",
+          "Label": "Specify the primary source of funding for the review.",
+          "AnswerType": "YesNo"
+        },
+        {
+          "Type": "radio",
+          "Domain": "Registration",
+          "Qnumber": "12",
+          "Label": "Provide the register name and registration number.",
+          "AnswerType": "YesNo"
+        }
+      ]
+    }
+    }
+  
+}
+  
+  

@@ -1,0 +1,5 @@
+### Welcome to the 2020 PRISMA Checklist app
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultricies, libero eget vulputate gravida, orci ex vestibulum ligula, vitae sodales massa turpis id libero. Curabitur ut leo tellus. Phasellus nec mi ac purus luctus tincidunt. Nulla commodo convallis gravida. Mauris vitae ligula vitae est iaculis sodales. Proin at vulputate nisi. Proin sollicitudin enim eu bibendum vehicula. Maecenas non risus quis ipsum luctus gravida. Sed consectetur nunc et nisl volutpat dignissim. Morbi et convallis velit. Pellentesque ut diam sit amet est rutrum ornare. Maecenas eu dignissim felis. Aenean at interdum purus.
+
+Please click "Additional information" for more guidance on using and citing the Checklist.

@@ -1,0 +1,124 @@
+## Functions which help us to create some structure of the shiny app
+## and defines the buttons which appear horizontal
+
+renderSection <- function(section){
+  # creates a tab ( can be changed to a fluidrow if we do not want tabs)
+  
+  tabPanel(title = section$Name,
+           value = section$Value,
+           icon  = tags$i(class = paste0("icon", section$Value, " fa fa-eye")),#icon("table"),
+           #id    = section$Value,
+    br(),
+    # create the header and an initial info about the section
+    fluidRow(column(1),
+             column(10,
+                    #h3(section$Name),
+                     strong(section$Label)
+                    ),
+             column(1)),
+
+    # render all fields within this section
+    lapply(section$Questions, customField),
+    
+    # a break line after each section
+    fluidRow(hr())
+  )
+  
+}
+
+customField <- function(ind){
+  # is the input is not question, it is assumed that it is some quidance text in between the items
+  if(ind$Type == "text"){
+    if(ind$Domain == "Abstract"){
+        # the quidance text can itself be conditional
+    fluidPage(
+      fluidRow(column(2, br(), strong(ind$Domain)),
+               column(1, br(), ind$Qnumber, align = "middle"),
+               column(4, br(), strong(ind$Label)),
+               column(2, br(), actionLink("test","Go to PRISMA-A"), align = "middle"), 
+               column(3))
+    )
+    } else {
+      fluidPage(
+        fluidRow(column(2, strong(ind$Domain)),
+                 column(4, strong(ind$Label)),
+                 column(2), 
+                 column(4))
+      )
+      
+    }
+    
+  } else { # render questions
+    customButton(ind)
+  }
+}
+
+
+
+customButton <- function(ind){
+    
+  # Always display unconditional items  
+  if(is.null(ind$Depends)){
+    ind$Depends <- "true"
+  } else { # or display depending on the state of the input
+    ind$Depends <- gsub(pattern = "\\.", replacement = "input.", ind$Depends)
+  }
+  
+  
+  if(ind$Type != "break"){ # when the item is not a comment, show the button in a 6:4 format (label: button)
+    fluidPage( # wrapping into another fluid page makes a slight indentation of the questions from the text fields
+                     fluidRow(column(2, br(), strong(ind$Domain)),
+                              column(1, br(), ind$Qnumber, align = "middle"),
+                              column(4, br(), ind$Label, 
+                                     a(ind$href, href = ind$href, target = "_blank"),
+                                     ind$LabelEnd), # this makes the buttons appear horizonally aligned
+                              column(2, switchButtons(ind, type = "radio"), align = "middle"), #, create a standard shiny button
+                              column(2, switchButtons(ind, type = "textInput")),
+                              column(1, br(), # adds exclamation circle next to the item
+                                     tags$div(
+                                       id = paste0("div", ind$Name, "Checker"),
+                                       title = "This question needs to be answered.",
+                                       tags$i(id = paste0(ind$Name, "Checker"),
+                                              class = 'fa fa-exclamation-circle')
+                                       )
+                                     )
+    )
+    )
+  } else{ # when the item is a comment, show the commentary section as a standard textArea stretched over the width of the panel
+    hr()
+  }
+}
+
+
+switchButtons <- function(ind, type){
+  # if the AnswerType is specified in the answerList object (from .json), the button options should be rendered from 
+  # those options
+  # otherwise, the AnswerType is passed directly to the options
+  if(ind$AnswerType %in% names(answerList)){
+    answers <- answerList[[ind$AnswerType]]
+  } else{ 
+    answers <- ind$AnswerType
+  }
+  
+  # switch between different input types
+  switch (type,
+    "select"    = pickerInput(inputId = ind$Name, label = "", choices = c("", answers),
+                              selected = NULL, multiple = FALSE,
+                              options = pickerOptions(noneSelectedText = "Please select an option")),
+    "radio"     = radioButtons(inputId = paste0(ind$Name), label = "", choices = answers, selected = 0,
+                               inline = TRUE),
+    "textInput" = textInput(inputId = paste0(ind$Name,"_text"), label = "", value = "", placeholder = "Page or section number" ),
+    "textArea"  = textAreaInput(inputId = ind$Name, label = "", placeholder =  answers, rows = 6)
+  )
+}
+
+
+getItemList <- function(sectionsList, all = TRUE){
+  items <- unlist(sapply(sectionsList, function(section) sapply(section$Questions, function(item) item$Name)))
+  
+  if(all){
+    return(items)
+  } else {
+    return(items[grep("ind", items)])
+  }
+}
