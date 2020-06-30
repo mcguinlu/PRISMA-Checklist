@@ -63,9 +63,83 @@ shinyServer(function(input, output, session) {
   # })
 
   # Temporary output that shows the current answers for debugging
-  output$answers <- renderPrint({
-   answers()
+  # Use to capture answers and pass to table
+  output$answers <- renderTable({
+  ll <- answers()[grepl("ind_m_.*_text\\b", names(answers()))]
+    
+  df <- data.frame(ID = rep(names(ll), sapply(ll, length)),
+                   Obs = unlist(ll))
+  sort(df$ID)
+  df
   })
+  
+  
+  # Carry across responses to the "Title" question in the Main checklist to the
+  # PRISMA-A checklist
+  observeEvent(input$ind_m_1, {
+    updateRadioButtons(session, "ind_a_1", selected = input$ind_m_1)
+  })
+  
+  observeEvent(input$ind_m_1_text, {
+    updateRadioButtons(session, "ind_a_1_text", selected = input$ind_m_1_text)
+  })
+  
+  #For testing - delete when done
+  observeEvent(input$fill, {
+    updateRadioButtons(session = session, "ind_a_1", selected = "Yes")
+    updateRadioButtons(session = session, "ind_a_2", selected = "Yes")
+    updateRadioButtons(session = session, "ind_a_3", selected = "Yes")
+    updateRadioButtons(session = session, "ind_a_4", selected = "Yes")
+    updateRadioButtons(session = session, "ind_a_5", selected = "Yes")
+    updateRadioButtons(session = session, "ind_a_6", selected = "Yes")
+    updateRadioButtons(session = session, "ind_a_7", selected = "Yes")
+    updateRadioButtons(session = session, "ind_a_8", selected = "Yes")
+    updateRadioButtons(session = session, "ind_a_9", selected = "Yes")
+    updateRadioButtons(session = session, "ind_a_10", selected = "Yes")
+    updateRadioButtons(session = session, "ind_a_11", selected = "Yes")
+    updateRadioButtons(session = session, "ind_a_12", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_1", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_3", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_4", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_5", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_6", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_7", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_8", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_9", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_10a", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_10b", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_11", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_12", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_13a", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_13b", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_13c", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_13d", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_13e", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_13f", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_14", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_15", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_16a", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_16b", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_17", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_18", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_19", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_20a", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_20b", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_20c", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_20d", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_21", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_22", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_23a", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_23b", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_23c", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_23d", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_24a", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_24b", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_24c", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_25", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_26", selected = "Yes")
+    updateRadioButtons(session = session, "ind_m_27", selected = "Yes")
+    })
   
   # checks which sections are complete
   whichComplete <- reactive({
@@ -156,17 +230,6 @@ shinyServer(function(input, output, session) {
     }
   })
   
-  # validate title of the study
-  observeEvent(input$studyTitle, {
-    feedbackSuccess(
-      inputId = "studyTitle",
-      show = input$studyTitle,
-      text = NULL,
-      color = "black"
-    )
-  })
-  
-
   #### Working with report ----
   # Stash current Rmd if report dropdown is opened or save_as is changed  
   RmdFile <- reactive({

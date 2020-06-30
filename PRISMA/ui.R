@@ -34,7 +34,9 @@ shinyUI(fluidPage(title = "",
 
   br(),
   
-  textOutput("answers"),
+  tableOutput("answers"),
+  
+  actionButton("fill","Fill"),
   
   # Show initial instructions:
   fluidRow(
@@ -62,11 +64,6 @@ shinyUI(fluidPage(title = "",
                        choices = c("pdf", "html", "word", "rtf"),
                        multiple = FALSE, width = 'auto', inline = FALSE),
            div(style = "display:inline-block",
-               actionBttn(inputId = "preview", label = "Preview", icon = icon("eye"),
-                          style = "simple",
-                          color = "primary",
-                          size = "xs",
-                          no_outline = FALSE),
                actionBttn(inputId = "showcode", label = "Show code", icon = icon("code"),
                           style = "simple",
                           color = "primary",
@@ -101,10 +98,6 @@ shinyUI(fluidPage(title = "",
   # ),
   br(), br(),
 
-  # Open window for a preview
-  shinyBS::bsModal(id = "previewer", title = "Preview", trigger = "preview", size = "large",
-                   shinycssloaders::withSpinner(uiOutput("generatePreview"))),
-
   # Open window for a code
   shinyBS::bsModal(id = "codeshower", title = "Code", trigger = "showcode", size = "large",
                    shinycssloaders::withSpinner(verbatimTextOutput("code"))),
@@ -113,7 +106,7 @@ shinyUI(fluidPage(title = "",
   shinyBS::bsTooltip(id = "report",
                      title = "A report can be downloaded after all questions in each section have been answered.",
                      trigger = "manual",
-                     placement = "left"),
+                     placement = "bottom"),
   uiOutput("trigger"), # this trigger displays or hides the explaining tooltip
   br(), br(),
 
