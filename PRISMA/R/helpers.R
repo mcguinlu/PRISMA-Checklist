@@ -33,8 +33,8 @@ customField <- function(ind){
         # the quidance text can itself be conditional
     fluidPage(
       fluidRow(column(2, br(), strong(ind$Domain)),
-               column(1, br(), ind$Qnumber, align = "middle"),
-               column(4, br(), strong(ind$Label)),
+               column(1, br(), strong(ind$Qnumber), align = "middle"),
+               column(4, br(), ind$Label),
                column(2, br(), actionLink("test","Go to PRISMA-A"), align = "middle"), 
                column(3))
     )
@@ -68,7 +68,7 @@ customButton <- function(ind){
   if(ind$Type != "break"){ # when the item is not a comment, show the button in a 6:4 format (label: button)
     fluidPage( # wrapping into another fluid page makes a slight indentation of the questions from the text fields
                      fluidRow(column(2, br(), strong(ind$Domain)),
-                              column(1, br(), ind$Qnumber, align = "middle"),
+                              column(1, br(), strong(ind$Qnumber), align = "middle"),
                               column(4, br(), ind$Label, 
                                      a(ind$href, href = ind$href, target = "_blank"),
                                      ind$LabelEnd), # this makes the buttons appear horizonally aligned
@@ -105,7 +105,7 @@ switchButtons <- function(ind, type){
     "select"    = pickerInput(inputId = ind$Name, label = "", choices = c("", answers),
                               selected = NULL, multiple = FALSE,
                               options = pickerOptions(noneSelectedText = "Please select an option")),
-    "radio"     = radioButtons(inputId = paste0(ind$Name), label = "", choices = answers, selected = 0,
+    "radio"     = radioButtons(inputId = paste0(ind$Name), label = "", choices = answers, selected = character(0),
                                inline = TRUE),
     "textInput" = textInput(inputId = paste0(ind$Name,"_text"), label = "", value = "", placeholder = "Page or section number" ),
     "textArea"  = textAreaInput(inputId = ind$Name, label = "", placeholder =  answers, rows = 6)
