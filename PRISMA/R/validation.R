@@ -1,9 +1,3 @@
-isValidEmail <- function(x, empty.valid) {
-  # code from Felix Schönbrodt
-  grepl("\\<[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}\\>", as.character(x), ignore.case=TRUE)
-}
-
-
 isComplete <- function(answers = NULL, sectionsList = NULL, headList = NULL){
   # First, check whether the answers to the header questions are:
   # complete and valid
@@ -68,23 +62,6 @@ isCompleteQuestion <- function(question, answers){
   # if a comment is supposed to be mandatory, change Type = 'comment' to Type = 'textArea' in .json
   if(question$Type %in% c("comment", "text", "break")){
     return(TRUE)
-  }
-  
-  # Check whether the question is supposed to be even shown;
-  # If not, skip to another question
-  if(!is.null(question$Depends)){
-    shown <- gsub(".ind_", "answers$ind_", question$Depends)
-    shown <- eval(parse(text = shown))
-    
-    # Depending on the status of the predicate questions, the above logical statement can result in logical(0) or NA,
-    # which is caused by predicate questions not being answered yet
-    # In that case, the question is not to be shown
-    shown <- ifelse(length(shown) == 0 || is.na(shown), FALSE, shown)
-    
-    # if the question is not shown, we do not require any answers, and thus the question is complete regardless of the answer
-    if(!shown){
-      return(TRUE)
-    }
   }
   
   # the current question is supposed to be shown, and so it needs to be in answers; otherwise, the question is not completed
