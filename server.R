@@ -64,13 +64,8 @@ shinyServer(function(input, output, session) {
 
   # Temporary output that shows the current answers for debugging
   # Use to capture answers and pass to table
-  output$answers <- renderTable({
-  ll <- answers()[grepl("ind_m_.*_text\\b", names(answers()))]
-    
-  df <- data.frame(ID = rep(names(ll), sapply(ll, length)),
-                   Obs = unlist(ll))
-  sort(df$ID)
-  df
+  output$answers <- renderUI({
+
   })
   
   
@@ -84,12 +79,11 @@ shinyServer(function(input, output, session) {
     updateRadioButtons(session, "ind_a_1_text", selected = input$ind_m_1_text)
   })
   
-  #For testing - delete when done
+  # #For testing - delete when done
   observeEvent(input$fill, {
-    updateRadioButtons(session = session, "ind_a_1", selected = "Yes")
-    updateRadioButtons(session = session, "ind_a_2", selected = "Yes")
+    updateRadioButtons(session = session, "ind_a_2", selected = "No")
     updateRadioButtons(session = session, "ind_a_3", selected = "Yes")
-    updateRadioButtons(session = session, "ind_a_4", selected = "Yes")
+    updateRadioButtons(session = session, "ind_a_4", selected = "No")
     updateRadioButtons(session = session, "ind_a_5", selected = "Yes")
     updateRadioButtons(session = session, "ind_a_6", selected = "Yes")
     updateRadioButtons(session = session, "ind_a_7", selected = "Yes")
@@ -99,6 +93,7 @@ shinyServer(function(input, output, session) {
     updateRadioButtons(session = session, "ind_a_11", selected = "Yes")
     updateRadioButtons(session = session, "ind_a_12", selected = "Yes")
     updateRadioButtons(session = session, "ind_m_1", selected = "Yes")
+    updateTextInput(session = session, "ind_m_1_text", value = "Section 1")
     updateRadioButtons(session = session, "ind_m_3", selected = "Yes")
     updateRadioButtons(session = session, "ind_m_4", selected = "Yes")
     updateRadioButtons(session = session, "ind_m_5", selected = "Yes")
@@ -156,11 +151,7 @@ shinyServer(function(input, output, session) {
   observe({
     if(isDownloadable()){
       shinyjs::enable("report")
-      
-      # and start animation every 4 sec
-      invalidateLater(4000, session)
-      shinyanimate::startAnim(session, "generatereport", type = "bounce")
-    } else{
+    } else {
       shinyjs::disable("report")
     }
   })
@@ -189,32 +180,6 @@ shinyServer(function(input, output, session) {
   
   })
   
-  observeEvent(input$generatereport, {
-    sectionId <- sapply(sectionsList, function(section) section$Value)
-    
-    #if(!isDownloadable()){
-      for(section in sectionId){
-        # output[[paste0("icon_", section)]] <- renderText({"table"})
-      }  
-    #}
-  })
-  
-  observeEvent(input$generatereport, {
-    items <- getItemList(sectionsList, all = FALSE)
-    ans   <- isolate(answers())
-    
-    for(item in items){
-      if(ans[item] == "" || is.null(ans[[item]])){
-        shinyanimate::startAnim(session, paste0(item, "Checker"), type = "shake")
-      }
-      
-      session$sendCustomMessage(
-        type = "toggleCheckerColor",
-        message = list(id = paste0(item, "Checker"), val = input[[item]], divId = paste0("div", item, "Checker"))
-      )
-    }
-  })
- 
   # Change icons in Section headings (three state option)
   observe({
     sectionValues <- sapply(sectionsList, function(sec) sec$Value)
@@ -230,79 +195,98 @@ shinyServer(function(input, output, session) {
     }
   })
   
-  #### Working with report ----
-  # Stash current Rmd if report dropdown is opened or save_as is changed  
-  RmdFile <- reactive({
-    dontrun <- input$generatereport
-    composeRmd(answers = isolate(answers()),
-               sectionsList = sectionsList, headList = headList, answerList = answerList,
-               save.as = input$save.as)
-  })
-  
-  # render Rmd file in show code modal panel
-  output$code <- renderText({
-    RmdFile()
-  })
-  
-  # render previews
-  output$generatePreview <- renderUI({
-    input$preview
-    RmdPath <- file.path(tempdir(), "report.Rmd")
-    writeLines(RmdFile(), con = RmdPath)
 
-    if(input$save.as %in% c("word", "rtf")){
-      showNotification("Word and rtf files cannot be previewed in the browser, displaying markdown file",
-                       type = "warning", closeButton = FALSE, duration = 7)
-      includeMarkdown(RmdPath)
-    } else{
-      save.as <- ifelse(input$save.as == "word", "docx", input$save.as)
-      out_file <- paste0("preview.", save.as)
-
-      rmarkdown::render(RmdPath, output_file = out_file, output_dir = "www/doc",
-                        envir = new.env(parent = globalenv()))
-      src_file <- file.path("doc", out_file)
-      tags$iframe(style = "height:600px; width:100%", src = src_file)
-    }
-  })
-
-  
-  
-  
-  
-  
   #### Download ----
   # This section deals with the pdf generation
   output$report <- downloadHandler(
     
-    
     filename = function() {
-      save.as <- ifelse(input$save.as == "word", "doc", input$save.as)
-      paste("Transparency Report", save.as, sep = ".")
+      save.as <- ifelse(input$save.as == "Word", "doc", input$save.as)
+      paste("PRISMA Checklist", save.as, sep = ".")
     },
     
     content = function(file) {
+      shiny::withProgress(message = paste0("Downloading checklist"),
+                          value = 0, {
       # Create the report file in a temporary directory before processing it, in
       # case we don't have write permissions to the current working dir (which
       # can happen when deployed).
-
-      # create a string which copies the structure of the desired rmd file
-      RmdFile <- composeRmd(answers = answers(),
-                            sectionsList = sectionsList, headList = headList, answerList = answerList,
-                            save.as = input$save.as)
+      # Copy the report file to a temporary directory before processing it, in
+      # case we don't have write permissions to the current working dir (which
+      # can happen when deployed).
       
-      # print the Rmd document in the console (for debugging)
-      #writeLines(RmdFile)
-      
-      # store the string as a temporary report.Rmd file 
       tempReport <- file.path(tempdir(), "report.Rmd")
-      writeLines(RmdFile, con = tempReport)
+      tempfile <- file.path(tempdir(), "reference.docx")
       
-      # knit the temporary document into a proper pdf (which will be called "report.pdf/html/doc")
-      rmarkdown::render(tempReport, output_file = file,
-                        envir = new.env(parent = globalenv()))
+      if (input$save.as == "pdf") {
+        file.copy("www/doc/report_pdf.Rmd", tempReport, overwrite = TRUE)
+      } else {
+        file.copy("www/doc/report_word.Rmd", tempReport, overwrite = TRUE)
+        file.copy("www/doc/word-styles-reference-01.docx", tempfile, overwrite = TRUE)
+      }
+
+      ll <- answers()[grepl("ind_m_.*\\b", names(answers()))]
+      df2 <- data.frame(ID = rep(names(ll), sapply(ll, length)),
+                        response = unlist(ll))
+      ll <- answers()[grepl("ind_m_.*_text\\b", names(answers()))]
+      df <- data.frame(ID = rep(names(ll), sapply(ll, length)),
+                       text = unlist(ll))
       
-      showNotification("Downloaded", type = "message", duration = 3, closeButton = FALSE)
+      df$ID <- gsub("ind_m_", "",df$ID)
+      df2$ID <- gsub("ind_m_", "",df2$ID)
+      df$ID <- gsub("_text", "",df$ID)
+      
+      df <- merge(df2, df, by= "ID")
+      colnames(df)[2] <- "Response"
+      colnames(df)[3] <- "Text"
+      
+      df_m <- merge(df_m, df, by.x = "No", by.y = "ID", all.x = TRUE, sort = FALSE)
+      
+      df_m <- df_m[order(df_m$seq),] %>%
+        select(Domain,No,Label,Response,Text)
+      
+      
+      ll <- answers()[grepl("ind_a_.*\\b", names(answers()))]
+      df2 <- data.frame(ID = rep(names(ll), sapply(ll, length)),
+                        response = unlist(ll))
+      ll <- answers()[grepl("ind_a_.*_text\\b", names(answers()))]
+      df <- data.frame(ID = rep(names(ll), sapply(ll, length)),
+                       text = unlist(ll))
+      
+      df$ID <- gsub("ind_a_", "",df$ID)
+      df2$ID <- gsub("ind_a_", "",df2$ID)
+      df$ID <- gsub("_text", "",df$ID)
+      
+      df <- merge(df2, df, by= "ID")
+      colnames(df)[2] <- "Response"
+      colnames(df)[3] <- "Text"
+      
+      df_a <- merge(df_a, df, by.x = "No", by.y = "ID", all.x = TRUE, sort = FALSE)
+      
+      df_a <- df_a[order(df_a$seq),] %>%
+        select(Domain,No,Label,Response,Text)
+      
+      # Set up parameters to pass to Rmd document
+      params <- list(df_m = df_m, 
+                     df_a = df_a)
+      # Knit the document, passing in the `params` list, and eval it in a
+      # child of the global environment (this isolates the code in the document
+      # from the code in this app).
+      rmarkdown::render(tempReport,
+                        output_file = file,
+                        params = params,
+                        envir = new.env(parent = globalenv())
+      )
+      })  
     }
   )
   
 })
+
+
+
+
+
+
+
+

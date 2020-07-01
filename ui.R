@@ -1,7 +1,7 @@
 library(shiny)
 
 shinyUI(fluidPage(title = "",
-                  theme = shinytheme("cerulean"),
+                  theme = shinytheme("yeti"),
   #### Load various .js files enabling interactivity ----
   useShinyjs(), # this is for enabling/disabling buttons from shinyjs
   useShinyFeedback(), # enabling/disabling feedback from shinyFeedback
@@ -12,9 +12,6 @@ shinyUI(fluidPage(title = "",
     shiny::tags$head(
       shiny::tags$script(
         src = "js/toggleChecker.js"
-      ),
-      shiny::tags$script(
-        src = "js/toggleCheckerColor.js"
       ),
       shiny::tags$script(
         src = "js/toggleSectionIcon.js"
@@ -34,15 +31,15 @@ shinyUI(fluidPage(title = "",
 
   br(),
   
-  tableOutput("answers"),
+  # uiOutput("answers"),
   
-  actionButton("fill","Fill"),
-  
+
   # Show initial instructions:
   fluidRow(
     column(1),
     column(10,
-           includeMarkdown("www/doc/briefIntro.Rmd")
+           includeMarkdown("www/doc/briefIntro.Rmd"), br(),  actionButton("fill","Complete with sample answers"),
+
            ),
     column(1)
   ),
@@ -61,19 +58,17 @@ shinyUI(fluidPage(title = "",
          dropdown(animate = FALSE,
            h4("Generate & Download Report"),
            pickerInput(inputId = "save.as", label = "Format",
-                       choices = c("pdf", "html", "word", "rtf"),
-                       multiple = FALSE, width = 'auto', inline = FALSE),
-           div(style = "display:inline-block",
-               actionBttn(inputId = "showcode", label = "Show code", icon = icon("code"),
-                          style = "simple",
-                          color = "primary",
-                          size = "xs",
-                          no_outline = FALSE)
-           ), br(), br(),
-           downloadButton('report', 'Download', class = "downbutt"),
-           
+                       choices = c(#"pdf",
+                                   #"html",
+                                   #"rtf",
+                                   "Word"),
+                       multiple = FALSE, selected = "Word", width = 'auto', inline = FALSE),
+           br(),
+           downloadButton('report', 'Download'),
+
            icon = icon("file-alt"), up = FALSE, label = "Generate Report",
-           size = "default", inputId = "generatereport")  ),
+           size = "default", inputId = "generatereport")
+  ),
   column(1)
   ),
   
@@ -87,28 +82,14 @@ shinyUI(fluidPage(title = "",
     column(1)
   ),
 
-  # Switching between sections
-  # fluidRow(column(2),
-  #          column(2, align = "center",
-  #                 actionButton("previousButton", "Go to previous section", icon = icon("arrow-circle-left"))),
-  #          column(4),
-  #          column(2, align = "center",
-  #                 actionButton("nextButton", "Go to next section", icon = icon("arrow-circle-right"))),
-  #          column(2)
-  # ),
-  br(), br(),
-
-  # Open window for a code
-  shinyBS::bsModal(id = "codeshower", title = "Code", trigger = "showcode", size = "large",
-                   shinycssloaders::withSpinner(verbatimTextOutput("code"))),
+br(), br(),
 
   # Show tooltip which says that the download is not ready
-  shinyBS::bsTooltip(id = "report",
+  shinyBS::bsTooltip(id = "generatereport",
                      title = "A report can be downloaded after all questions in each section have been answered.",
                      trigger = "manual",
-                     placement = "bottom"),
+                     placement = "top"),
   uiOutput("trigger"), # this trigger displays or hides the explaining tooltip
-  br(), br(),
 
   # info modal
   shinyBS::bsModal(id = "intro", title = "About", trigger = "triggerIntro", size = "large",
