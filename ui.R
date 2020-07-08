@@ -15,7 +15,8 @@ shinyUI(fluidPage(title = "",
       ),
       shiny::tags$script(
         src = "js/toggleSectionIcon.js"
-      )
+      ),
+      shiny::includeHTML("google-analytics.html"),
     )
   ),
   # hack to load font-awesome when Shiny loads
@@ -58,13 +59,21 @@ shinyUI(fluidPage(title = "",
          dropdown(animate = FALSE,
            h4("Generate & Download Report"),
            pickerInput(inputId = "save.as", label = "Format",
-                       choices = c(#"pdf",
+                       choices = c("Word",
+                                   "PDF"
                                    #"html",
-                                   #"rtf",
-                                   "Word"),
+                                   #"rtf"
+                                   ),
                        multiple = FALSE, selected = "Word", width = 'auto', inline = FALSE),
            br(),
-           downloadButton('report', 'Download'),
+           downloadButton('report', 'Download Main + Abstract'),
+           br(),
+           br(),
+           downloadButton('report_main', 'Download Main only'),
+           br(),
+           br(),
+           downloadButton('report_abs', 'Download Abstract only'),
+           
 
            icon = icon("file-alt"), up = FALSE, label = "Generate Report",
            size = "default", inputId = "generatereport")
