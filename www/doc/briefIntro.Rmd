@@ -1,5 +1,7 @@
-### Welcome to the 2020 PRISMA Checklist app
+### Welcome
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultricies, libero eget vulputate gravida, orci ex vestibulum ligula, vitae sodales massa turpis id libero. Curabitur ut leo tellus. Phasellus nec mi ac purus luctus tincidunt. Nulla commodo convallis gravida. Mauris vitae ligula vitae est iaculis sodales. Proin at vulputate nisi. Proin sollicitudin enim eu bibendum vehicula. Maecenas non risus quis ipsum luctus gravida. Sed consectetur nunc et nisl volutpat dignissim. Morbi et convallis velit. Pellentesque ut diam sit amet est rutrum ornare. Maecenas eu dignissim felis. Aenean at interdum purus.
+The PRISMA 2020 statement is intended to facilitate transparent reporting of systematic reviews (with or without meta-analysis). It has been designed primarily for systematic reviews of studies that evaluate the effects of health interventions, irrespective of the design of included studies. However, the checklist items are applicable also to reports of systematic reviews evaluating other (non-health-related) interventions and systematic reviews with objectives other than evaluating interventions. 
 
-Please click "Additional information" for more guidance on using and citing the Checklist.
+The PRISMA 2020 statement comprises a 27-item checklist addressing the introduction, methods, results and discussion sections of a systematic review report, and a 12-item checklist for the abstract. Once users record a response for each item in the checklist(s) below, they can generate and download a report of their completed checklist in Word or PDF format.
+
+Please click "Additional information" for more guidance on using and citing the Checklist. 
