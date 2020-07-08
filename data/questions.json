@@ -255,18 +255,18 @@
           "Label": "Present results of any sensitivity analyses used to assess the robustness of the synthesized results.",
           "AnswerType": "YesNo"
         },
-                        {
-          "Type": "radio",
-          "Domain": "Certainty of evidence",
-          "Qnumber": "21",
-          "Label": "Present assessments of the certainty (or confidence) in the body of evidence for an outcome that were conducted.",
-          "AnswerType": "YesNo"
-        },
                                 {
           "Type": "radio",
           "Domain": "Risk of reporting biases in syntheses",
-          "Qnumber": "22",
+          "Qnumber": "21",
           "Label": "Present assessments of the risk of bias due to missing results in a synthesis that were conducted.",
+          "AnswerType": "YesNo"
+        },
+                        {
+          "Type": "radio",
+          "Domain": "Certainty of evidence",
+          "Qnumber": "22",
+          "Label": "Present assessments of the certainty (or confidence) in the body of evidence for an outcome that were conducted.",
           "AnswerType": "YesNo"
         },
         
