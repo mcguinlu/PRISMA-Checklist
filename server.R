@@ -1,74 +1,17 @@
-library(shiny)
-
 shinyServer(function(input, output, session) {
   
-  #### Send header and questions to UI ----
-  # output$currentTime <- renderText({
-  #   #invalidateLater(1000, session)
-  #   shinyBS::toggleModal(session, "intro")
-  #   paste("Created on: ", format(Sys.time(), '%d %B, %Y'))
-  # })
-  
-  # observe({
-  #   shinyBS::toggleModal(session, "intro")
-  # })
-  
-  # Deprecated rendering of sections (now created in global.R and passed in ui directly)
-  # render the header section
-  # output$head <- renderUI({
-  #   headingHTML
-  # })
-  
-  # render sections as tab sections
-  # output$questions <- renderUI({
-  #   sectionsHTML
-  # })
-  
-  #### Store answers, check whether checklist is complete ----
-  # stores the answers in a list
-  answers <- reactive({
-    reactiveValuesToList(input)
-  })
-  
-  # #### Moving to the next or previous sections ----
-  observeEvent(input$test, {
+
+# NAVIGATION --------------------------------------------------------------
+
+  # Move to PRISMA-A tab from Item 2 of the Main checklist
+  observeEvent(input$gotoAb, {
     sectionId <- sapply(sectionsList, function(section) section$Value)
     currSection <- which(sectionId == input$sections)
     nextSection <- currSection + 1
     updateTabsetPanel(session, "sections", selected = sectionId[[nextSection]])
     shinyjs::runjs("document.getElementById('scrollAnchor').scrollIntoView({behavior: 'smooth'});")
   })
-  # observeEvent(input$previousButton, {
-  #   sectionId <- sapply(sectionsList, function(section) section$Value)
-  #   currSection <- which(sectionId == input$sections)
-  #   nextSection <- currSection - 1
-  #   updateTabsetPanel(session, "sections", selected = sectionId[[nextSection]])
-  #   shinyjs::runjs("document.getElementById('scrollAnchor').scrollIntoView({behavior: 'smooth'});")
-  # })
-  # # disable moving next or previous for first and last sections
-  # observeEvent(input$sections, {
-  #   sectionId <- sapply(sectionsList, function(section) section$Value)
-  #   currSection <- which(sectionId == input$sections)
-  #   if(currSection == 1){
-  #     shinyjs::hide("previousButton")
-  #   } else{
-  #     shinyjs::show("previousButton")
-  #   }
-  #   
-  #   if(currSection == length(sectionId)){
-  #     shinyjs::hide("nextButton")
-  #   } else{
-  #     shinyjs::show("nextButton")
-  #   }
-  # })
 
-  # Temporary output that shows the current answers for debugging
-  # Use to capture answers and pass to table
-  output$answers <- renderUI({
-
-  })
-  
-  
   # Carry across responses to the "Title" question in the Main checklist to the
   # PRISMA-A checklist
   observeEvent(input$ind_m_1, {
@@ -78,8 +21,11 @@ shinyServer(function(input, output, session) {
   observeEvent(input$ind_m_1_text, {
     updateRadioButtons(session, "ind_a_1_text", selected = input$ind_m_1_text)
   })
+
   
-  # #For testing - delete when done
+# TESTING -----------------------------------------------------------------
+
+  # For testing - delete when done
   observeEvent(input$fill, {
     updateRadioButtons(session = session, "ind_a_2", selected = "No")
     updateRadioButtons(session = session, "ind_a_3", selected = "Yes")
@@ -93,7 +39,7 @@ shinyServer(function(input, output, session) {
     updateRadioButtons(session = session, "ind_a_11", selected = "Yes")
     updateRadioButtons(session = session, "ind_a_12", selected = "Yes")
     updateRadioButtons(session = session, "ind_m_1", selected = "Yes")
-    updateTextInput(session = session, "ind_m_1_text", value = "Section 1")
+    updateTextInput(session = session, "ind_m_1_text", value = "Section 1, Page 2")
     updateRadioButtons(session = session, "ind_m_3", selected = "Yes")
     updateRadioButtons(session = session, "ind_m_4", selected = "Yes")
     updateRadioButtons(session = session, "ind_m_5", selected = "Yes")
@@ -136,27 +82,72 @@ shinyServer(function(input, output, session) {
     updateRadioButtons(session = session, "ind_m_27", selected = "Yes")
     })
   
-  # checks which sections are complete
-  whichComplete <- reactive({
-    isComplete(answers = answers(), sectionsList = sectionsList, headList = headList)
-  })
+
+# VALIDATION --------------------------------------------------------------
+
+  # Checks which sections are complete, and enables download when they are
+  # Three different set-ups: one for both, and one for each (Main ("_main") /
+  # Abstract (_abs))
   
-  # checks whether the report is complete
-  isDownloadable <- reactive({
-    all(whichComplete())
-  })
+  # Validation for both checklists
+    whichComplete <- reactive({
+      isComplete(answers = answers(), sectionsList = sectionsList, headList = headList)
+    })
   
-  #### Reactive animations ----
-  # whenever the input is complete, let's enable the download button
-  observe({
-    if(isDownloadable()){
-      shinyjs::enable("report")
-    } else {
-      shinyjs::disable("report")
-    }
-  })
+    isDownloadable <- reactive({
+      all(whichComplete())
+    })
+    
+    observe({
+      if(isDownloadable()){
+        shinyjs::enable("report")
+      } else {
+        shinyjs::disable("report")
+      }
+    })
   
-  # whenever the input is not complete, show the tooltip for explanation for the download button
+  # Validation for Abstract checklist only
+    whichComplete_abs <- reactive({
+      isComplete(answers = answers(),
+                 sectionsList = sectionsList[2],
+                 headList = headList)
+    })
+    
+    isDownloadable_abs <- reactive({
+      all(whichComplete_abs())
+    })
+    
+    observe({
+      if(isDownloadable_abs()){
+        shinyjs::enable("report_abs")
+      } else {
+        shinyjs::disable("report_abs")
+      }
+    })
+  
+  # Validation for Main checklist only
+    whichComplete_main <- reactive({
+      isComplete(answers = answers(),
+                 sectionsList = sectionsList[1],
+                 headList = headList)
+    })
+    
+    isDownloadable_main <- reactive({
+      all(whichComplete_main())
+    })
+    
+    observe({
+      if(isDownloadable_main()){
+        shinyjs::enable("report_main")
+      } else {
+        shinyjs::disable("report_main")
+      }
+    })
+  
+
+# DYNAMIC FEEDBACK --------------------------------------------------------
+
+  # Show exclamation beside items that are not complete
   output$trigger <- renderUI({
     if(isDownloadable()){
       tags$script("$('#report').tooltip('hide');")
@@ -166,120 +157,224 @@ shinyServer(function(input, output, session) {
 
   })
   
-  # changing icons when item is answered
+  # Change icon to tick when a question is answered
   observe({
     items <- getItemList(sectionsList, all = FALSE) # loop only on items
     
-    for(item in items){
-      
-      session$sendCustomMessage(
-        type = "toggleChecker",
-        message = list(id = paste0(item, "Checker"), val = input[[item]], divId = paste0("div", item, "Checker"))
-      )
+    for (item in items) {
+      session$sendCustomMessage(type = "toggleChecker",
+                                message = list(
+                                  id = paste0(item, "Checker"),
+                                  val = input[[item]],
+                                  divId = paste0("div", item, "Checker")
+                                ))
     }
-  
+    
   })
   
-  # Change icons in Section headings (three state option)
+  # Change icons in Section headings
   observe({
-    sectionValues <- sapply(sectionsList, function(sec) sec$Value)
-    for(i in seq_along(sectionValues)){
-      session$sendCustomMessage(
-        type = "toggleSectionIcon",
-        # as long as the user does not click "report", do not display aggresive feedback (-> val = "init")
-        message = list(id = paste0(".icon", sectionValues[[i]]),
-                       val = ifelse(input$generatereport == 0 && !whichComplete()[[i]],
-                                    "init", whichComplete()[[i]])
-                       )
-      )
+    sectionValues <- sapply(sectionsList, function(sec)
+      sec$Value)
+    for (i in seq_along(sectionValues)) {
+      session$sendCustomMessage(type = "toggleSectionIcon",
+                                message = list(
+                                  id = paste0(".icon", sectionValues[[i]]),
+                                  val = ifelse(
+                                    input$generatereport == 0 && !whichComplete()[[i]],
+                                    "init",
+                                    whichComplete()[[i]]
+                                  )
+                                ))
     }
   })
   
 
-  #### Download ----
-  # This section deals with the pdf generation
-  output$report <- downloadHandler(
+# CLEAN AND FORMAT ANSWERS ------------------------------------------------
+
+  # Convert answers to list
+  answers <- reactive({
+    reactiveValuesToList(input)
+  })
+  
+  # Create reactive values containing the dataframes produced from JSON in
+  # global.R
+  rv <- reactiveValues(df_m = df_m, df_a = df_a)
+  
+  # Once "Generate report" is clicked, create clean datasets
+  observeEvent(input$generatereport,{
     
+    # Create clean Main checklist 
+    # Extract answers and text to dataframes
+    ll <- answers()[grepl("ind_m_.*\\b", names(answers()))]
+    df2 <- data.frame(ID = rep(names(ll), sapply(ll, length)),
+                      response = unlist(ll))
+    ll <- answers()[grepl("ind_m_.*_text\\b", names(answers()))]
+    df <- data.frame(ID = rep(names(ll), sapply(ll, length)),
+                     text = unlist(ll))
+    
+    # Get item ID
+    df$ID <- gsub("ind_m_", "",df$ID)
+    df2$ID <- gsub("ind_m_", "",df2$ID)
+    df$ID <- gsub("_text", "",df$ID)
+    
+    # Merge to create dataframe containing ID, answer, answer text
+    df <- merge(df2, df, by= "ID")
+    colnames(df)[2] <- "Response"
+    colnames(df)[3] <- "Text"
+    
+    # Merge with dataframe containing question text
+    df_m <- merge(df_m, df, by.x = "No", by.y = "ID", all.x = TRUE, sort = FALSE)
+    
+    # Order by seq and select relevant columns
+    df_m <- df_m[order(df_m$seq),] %>%
+      select(Domain,No,Label,Response,Text)
+    
+    # Assign to reactive value
+    rv$df_m <- df_m
+    
+    
+    # Create clean abstract checklist dataframe (with answers)
+    ll <- answers()[grepl("ind_a_.*\\b", names(answers()))]
+    df2 <- data.frame(ID = rep(names(ll), sapply(ll, length)),
+                      response = unlist(ll))
+    ll <- answers()[grepl("ind_a_.*_text\\b", names(answers()))]
+    df <- data.frame(ID = rep(names(ll), sapply(ll, length)),
+                     text = unlist(ll))
+    
+    # Get item ID
+    df$ID <- gsub("ind_a_", "",df$ID)
+    df2$ID <- gsub("ind_a_", "",df2$ID)
+    df$ID <- gsub("_text", "",df$ID)
+    
+    # Merge to create dataframe containing ID, answer, answer text
+    df <- merge(df2, df, by= "ID")
+    colnames(df)[2] <- "Response"
+    colnames(df)[3] <- "Text"
+    
+    # Merge with dataframe containing question text    
+    df_a <- merge(df_a, df, by.x = "No", by.y = "ID", all.x = TRUE, sort = FALSE)
+    
+    # Order by seq and select relevant columns
+    df_a <- df_a[order(df_a$seq),] %>%
+      select(Domain,No,Label,Response,Text)
+    
+    # Assign to reactive value
+    rv$df_a <- df_a
+  })
+  
+  
+
+# DOWNLOADS ---------------------------------------------------------------
+
+  # Download Main + Abstract report
+  output$report <- downloadHandler(
     filename = function() {
-      save.as <- ifelse(input$save.as == "Word", "doc", input$save.as)
-      paste("PRISMA Checklist", save.as, sep = ".")
+      format <- ifelse(input$format == "Word", "docx", "pdf")
+      paste0("PRISMA (Main + Abstract) Checklist.", format)
     },
     
     content = function(file) {
       shiny::withProgress(message = paste0("Downloading checklist"),
-                          value = 0, {
-      # Create the report file in a temporary directory before processing it, in
-      # case we don't have write permissions to the current working dir (which
-      # can happen when deployed).
-      # Copy the report file to a temporary directory before processing it, in
-      # case we don't have write permissions to the current working dir (which
-      # can happen when deployed).
-      
-      tempReport <- file.path(tempdir(), "report.Rmd")
-      tempfile <- file.path(tempdir(), "reference.docx")
-      
-      if (input$save.as == "pdf") {
-        file.copy("www/doc/report_pdf.Rmd", tempReport, overwrite = TRUE)
-      } else {
-        file.copy("www/doc/report_word.Rmd", tempReport, overwrite = TRUE)
-        file.copy("www/doc/word-styles-reference-01.docx", tempfile, overwrite = TRUE)
-      }
-
-      ll <- answers()[grepl("ind_m_.*\\b", names(answers()))]
-      df2 <- data.frame(ID = rep(names(ll), sapply(ll, length)),
-                        response = unlist(ll))
-      ll <- answers()[grepl("ind_m_.*_text\\b", names(answers()))]
-      df <- data.frame(ID = rep(names(ll), sapply(ll, length)),
-                       text = unlist(ll))
-      
-      df$ID <- gsub("ind_m_", "",df$ID)
-      df2$ID <- gsub("ind_m_", "",df2$ID)
-      df$ID <- gsub("_text", "",df$ID)
-      
-      df <- merge(df2, df, by= "ID")
-      colnames(df)[2] <- "Response"
-      colnames(df)[3] <- "Text"
-      
-      df_m <- merge(df_m, df, by.x = "No", by.y = "ID", all.x = TRUE, sort = FALSE)
-      
-      df_m <- df_m[order(df_m$seq),] %>%
-        select(Domain,No,Label,Response,Text)
-      
-      
-      ll <- answers()[grepl("ind_a_.*\\b", names(answers()))]
-      df2 <- data.frame(ID = rep(names(ll), sapply(ll, length)),
-                        response = unlist(ll))
-      ll <- answers()[grepl("ind_a_.*_text\\b", names(answers()))]
-      df <- data.frame(ID = rep(names(ll), sapply(ll, length)),
-                       text = unlist(ll))
-      
-      df$ID <- gsub("ind_a_", "",df$ID)
-      df2$ID <- gsub("ind_a_", "",df2$ID)
-      df$ID <- gsub("_text", "",df$ID)
-      
-      df <- merge(df2, df, by= "ID")
-      colnames(df)[2] <- "Response"
-      colnames(df)[3] <- "Text"
-      
-      df_a <- merge(df_a, df, by.x = "No", by.y = "ID", all.x = TRUE, sort = FALSE)
-      
-      df_a <- df_a[order(df_a$seq),] %>%
-        select(Domain,No,Label,Response,Text)
-      
-      # Set up parameters to pass to Rmd document
-      params <- list(df_m = df_m, 
-                     df_a = df_a)
-      # Knit the document, passing in the `params` list, and eval it in a
-      # child of the global environment (this isolates the code in the document
-      # from the code in this app).
-      rmarkdown::render(tempReport,
-                        output_file = file,
-                        params = params,
-                        envir = new.env(parent = globalenv())
-      )
-      })  
+                          value = 0.8,
+                          {
+                            tempReport <- file.path(tempdir(), "report.Rmd")
+                            tempfile <- file.path(tempdir(), "reference.docx")
+                            
+                            if (input$format == "PDF") {
+                              file.copy("www/doc/report_pdf.Rmd", tempReport, overwrite = TRUE)
+                            } else {
+                              file.copy("www/doc/report_word.Rmd", tempReport, overwrite = TRUE)
+                              file.copy("www/doc/word-styles-reference-01.docx",
+                                        tempfile,
+                                        overwrite = TRUE)
+                            }
+                            
+                            # Render the report
+                            rmarkdown::render(
+                              tempReport,
+                              output_file = file,
+                              params = list(df_m = rv$df_m, # Main data 
+                                            df_a = rv$df_a), # Abstract data
+                              envir = new.env(parent = globalenv())
+                            )
+                            
+                          })
     }
   )
+  
+  # Download Main report only
+  output$report_main <- downloadHandler(
+    filename = function() {
+      format <- ifelse(input$format == "Word", "docx", "pdf")
+      paste0("PRISMA (Main) Checklist.", format)
+    },
+    
+    content = function(file) {
+      shiny::withProgress(message = paste0("Downloading checklist"),
+                          value = 0.8,
+                          {
+                            tempReport <- file.path(tempdir(), "report.Rmd")
+                            tempfile <-
+                              file.path(tempdir(), "reference.docx")
+                            
+                            if (input$format == "PDF") {
+                              file.copy("www/doc/report_pdf_main.Rmd", tempReport, overwrite = TRUE)
+                            } else {
+                              file.copy("www/doc/report_word_main.Rmd", tempReport, overwrite = TRUE)
+                              file.copy("www/doc/word-styles-reference-01.docx",
+                                        tempfile,
+                                        overwrite = TRUE)
+                            }
+                            
+                            # Render the report
+                            rmarkdown::render(
+                              tempReport,
+                              output_file = file,
+                              params = list(df_m = rv$df_m), # Main data
+                              envir = new.env(parent = globalenv())
+                            )
+                          })
+    }
+  )
+  
+  # Download Abstract report only
+  output$report_abs <- downloadHandler(
+    filename = function() {
+      format <- ifelse(input$format == "Word", "docx", "pdf")
+      paste0("PRISMA (Abstract) Checklist.", format)
+    },
+    
+    content = function(file) {
+      shiny::withProgress(message = paste0("Downloading checklist"),
+                          value = 0.8,
+                          {
+                            tempReport <- file.path(tempdir(), "report.Rmd")
+                            tempfile <-
+                              file.path(tempdir(), "reference.docx")
+                            
+                            if (input$format == "PDF") {
+                              file.copy("www/doc/report_pdf_abs.Rmd", tempReport, overwrite = TRUE)
+                            } else {
+                              file.copy("www/doc/report_word_abs.Rmd", tempReport, overwrite = TRUE)
+                              file.copy("www/doc/word-styles-reference-01.docx",
+                                        tempfile,
+                                        overwrite = TRUE)
+                            }
+                            
+                            # Render the report
+                            rmarkdown::render(
+                              tempReport,
+                              output_file = file,
+                              params = list(df_a = rv$df_a), # Abstract data
+                              envir = new.env(parent = globalenv())
+                            )
+                          })
+    }
+  )
+  
+
+  
   
 })
 
