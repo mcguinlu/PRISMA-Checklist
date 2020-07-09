@@ -6,8 +6,7 @@ renderSection <- function(section){
   
   tabPanel(title = section$Name,
            value = section$Value,
-           icon  = tags$i(class = paste0("icon", section$Value, " fa fa-eye")),#icon("table"),
-           #id    = section$Value,
+           icon  = tags$i(class = paste0("icon", section$Value, " fa fa-eye")),
     br(),
     # create the header and an initial info about the section
     fluidRow(column(1),
@@ -26,29 +25,32 @@ renderSection <- function(section){
   
 }
 
-customField <- function(ind){
-  # is the input is not question, it is assumed that it is some quidance text in between the items
-  if(ind$Type == "text"){
-    if(ind$Domain == "Abstract"){
-        # the quidance text can itself be conditional
-    fluidPage(
-      fluidRow(column(2, br(), strong(ind$Domain)),
-               column(1, br(), strong(ind$Qnumber), align = "middle"),
-               column(4, br(), ind$Label),
-               column(2, br(), actionLink("test","Go to PRISMA-A"), align = "middle"), 
-               column(3))
-    )
+customField <- function(ind) {
+  # Renders domain headings (e.g Title), and special case of the Abstract item
+  if (ind$Type == "text") {
+    if (ind$Domain == "Abstract") {
+      # Handles special case for the Abstract item of the main checklist, which
+      # points you towards the Abstract checklist
+      # Special case is indicated by Domain == Abstract
+      fluidPage(fluidRow(
+        column(2, br(), strong(ind$Domain)),
+        column(1, br(), strong(ind$Qnumber), align = "middle"),
+        column(4, br(), ind$Label),
+        column(2, br(), actionLink("gotoAb", "Go to PRISMA-A"), align = "middle"),
+        column(3)
+      ))
     } else {
-      fluidPage(
-        fluidRow(column(2, strong(ind$Domain)),
-                 column(4, strong(ind$Label)),
-                 column(2), 
-                 column(4))
-      )
+      # Adds row with 
+      fluidPage(fluidRow(
+        column(2, strong(ind$Domain)),
+        column(4, strong(ind$Label)),
+        column(2),
+        column(4)
+      ))
       
     }
     
-  } else { # render questions
+  } else {
     customButton(ind)
   }
 }
@@ -84,7 +86,9 @@ customButton <- function(ind){
                                      )
     )
     )
-  } else{ # when the item is a comment, show the commentary section as a standard textArea stretched over the width of the panel
+  } else{
+    # If the Type is a break, produce a horizontal rule.
+    # Used to seperate the sections
     hr()
   }
 }
@@ -102,13 +106,9 @@ switchButtons <- function(ind, type){
   
   # switch between different input types
   switch (type,
-    "select"    = pickerInput(inputId = ind$Name, label = "", choices = c("", answers),
-                              selected = NULL, multiple = FALSE,
-                              options = pickerOptions(noneSelectedText = "Please select an option")),
     "radio"     = radioButtons(inputId = paste0(ind$Name), label = "", choices = answers, selected = character(0),
                                inline = TRUE),
     "textInput" = textInput(inputId = paste0(ind$Name,"_text"), label = "", value = "", placeholder = "Page or section number" ),
-    "textArea"  = textAreaInput(inputId = ind$Name, label = "", placeholder =  answers, rows = 6)
   )
 }
 
