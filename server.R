@@ -40,6 +40,7 @@ shinyServer(function(input, output, session) {
     updateRadioButtons(session = session, "ind_a_12", selected = "Yes")
     updateRadioButtons(session = session, "ind_m_1", selected = "Yes")
     updateTextInput(session = session, "ind_m_1_text", value = "Section 1, Page 2")
+    updateTextInput(session = session, "ind_m_3_text", value = "A really long string to see if the reports look okay when there is a lot of text.")
     updateRadioButtons(session = session, "ind_m_3", selected = "Yes")
     updateRadioButtons(session = session, "ind_m_4", selected = "Yes")
     updateRadioButtons(session = session, "ind_m_5", selected = "Yes")
@@ -220,15 +221,19 @@ shinyServer(function(input, output, session) {
     
     # Merge to create dataframe containing ID, answer, answer text
     df <- merge(df2, df, by= "ID")
-    colnames(df)[2] <- "Response"
-    colnames(df)[3] <- "Text"
+    colnames(df)[2] <- "Reported?"
+    colnames(df)[3] <- "Page/Section"
     
     # Merge with dataframe containing question text
     df_m <- merge(df_m, df, by.x = "No", by.y = "ID", all.x = TRUE, sort = FALSE)
     
     # Order by seq and select relevant columns
     df_m <- df_m[order(df_m$seq),] %>%
-      select(Domain,No,Label,Response,Text)
+      select(Domain,No,Label,"Reported?","Page/Section")
+    
+    colnames(df_m)[1] <- "Topic"
+    colnames(df_m)[2] <- "No."
+    colnames(df_m)[3] <- "Item"
     
     # Assign to reactive value
     rv$df_m <- df_m
@@ -249,15 +254,19 @@ shinyServer(function(input, output, session) {
     
     # Merge to create dataframe containing ID, answer, answer text
     df <- merge(df2, df, by= "ID")
-    colnames(df)[2] <- "Response"
-    colnames(df)[3] <- "Text"
+    colnames(df)[2] <- "Reported?"
+    colnames(df)[3] <- "Page/Section"
     
     # Merge with dataframe containing question text    
     df_a <- merge(df_a, df, by.x = "No", by.y = "ID", all.x = TRUE, sort = FALSE)
     
     # Order by seq and select relevant columns
     df_a <- df_a[order(df_a$seq),] %>%
-      select(Domain,No,Label,Response,Text)
+      select(Domain,No,Label,"Reported?","Page/Section")
+    
+    colnames(df_a)[1] <- "Topic"
+    colnames(df_a)[2] <- "No."
+    colnames(df_a)[3] <- "Item"
     
     # Assign to reactive value
     rv$df_a <- df_a
@@ -282,13 +291,14 @@ shinyServer(function(input, output, session) {
                             tempfile <- file.path(tempdir(), "reference.docx")
                             
                             if (input$format == "PDF") {
-                              file.copy("www/doc/report_pdf.Rmd", tempReport, overwrite = TRUE)
+                              file.copy(paste0("www/doc/report_pdf_",input$orient,".Rmd"), tempReport, overwrite = TRUE)
                             } else {
                               file.copy("www/doc/report_word.Rmd", tempReport, overwrite = TRUE)
-                              file.copy("www/doc/word-styles-reference-01.docx",
+                              file.copy(paste0("www/doc/word-styles-reference-",input$orient,".docx"),
                                         tempfile,
                                         overwrite = TRUE)
                             }
+
                             
                             # Render the report
                             rmarkdown::render(
@@ -319,10 +329,10 @@ shinyServer(function(input, output, session) {
                               file.path(tempdir(), "reference.docx")
                             
                             if (input$format == "PDF") {
-                              file.copy("www/doc/report_pdf_main.Rmd", tempReport, overwrite = TRUE)
+                              file.copy(paste0("www/doc/report_pdf_main_",input$orient,".Rmd"), tempReport, overwrite = TRUE)
                             } else {
                               file.copy("www/doc/report_word_main.Rmd", tempReport, overwrite = TRUE)
-                              file.copy("www/doc/word-styles-reference-01.docx",
+                              file.copy(paste0("www/doc/word-styles-reference-",input$orient,".docx"),
                                         tempfile,
                                         overwrite = TRUE)
                             }
@@ -354,10 +364,10 @@ shinyServer(function(input, output, session) {
                               file.path(tempdir(), "reference.docx")
                             
                             if (input$format == "PDF") {
-                              file.copy("www/doc/report_pdf_abs.Rmd", tempReport, overwrite = TRUE)
+                              file.copy(paste0("www/doc/report_pdf_abs_",input$orient,".Rmd"), tempReport, overwrite = TRUE)
                             } else {
                               file.copy("www/doc/report_word_abs.Rmd", tempReport, overwrite = TRUE)
-                              file.copy("www/doc/word-styles-reference-01.docx",
+                              file.copy(paste0("www/doc/word-styles-reference-",input$orient,".docx"),
                                         tempfile,
                                         overwrite = TRUE)
                             }
