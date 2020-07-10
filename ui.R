@@ -54,28 +54,37 @@ shinyUI(
       column(6),
       column(
         2,
-        align = "right",
-        dropdown(
+        align = "center",
+        dropdown(right = FALSE,
           animate = FALSE,
           h4("Generate & Download Report"),
-          pickerInput(
+          selectInput(
             inputId = "format",
             label = "Format",
             choices = c("Word",
                         "PDF"),
                         multiple = FALSE,
                         selected = "Word",
-                        width = 'auto',
-                        inline = FALSE
+                        width = "auto"
             ),
+          selectInput(
+            inputId = "orient",
+            label = "Orientation",
+            choices = c("Portrait",
+                        "Landscape"),
+            multiple = FALSE,
+            selected = "Portrait",
+            width = 'auto'
+          ),
+          br(),
+          
+            downloadButton('report','Download Main + Abstract', width = "100%"),
             br(),
-            downloadButton('report', 'Download Main + Abstract'),
+            br(),
+            downloadButton('report_main', 'Download Main only', width = "100%"),
             br(),
             br(),
-            downloadButton('report_main', 'Download Main only'),
-            br(),
-            br(),
-            downloadButton('report_abs', 'Download Abstract only'),
+            downloadButton('report_abs',  'Download Abstract only  '),
             
             
             icon = icon("file-alt"),
@@ -83,6 +92,7 @@ shinyUI(
             label = "Generate Report",
             size = "default",
             inputId = "generatereport"
+
           )
         ),
         column(1)
