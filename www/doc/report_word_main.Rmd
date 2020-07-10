@@ -8,7 +8,7 @@ params:
   df_a: NA
 ---
 
-# PRISMA Main Checklist
+# PRISMA 2020 Main Checklist
 
 ``` {r echo = FALSE}
 

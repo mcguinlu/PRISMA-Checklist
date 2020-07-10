@@ -1,0 +1,66 @@
+---
+title: ""
+output: pdf_document
+params:
+  df_m: NA
+  df_a: NA
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage[normalem]{ulem}
+---
+
+# PRISMA 2020 Main Checklist
+
+``` {r echo = FALSE, warning = FALSE, message = FALSE}
+options(kableextra.auto_format = FALSE)
+
+df <- params$df_m
+rownames(df) <- NULL
+df <- sapply(df, as.character) # since your values are `factor`
+df[is.na(df)] <- ""
+
+df %>%
+kable(format = "latex", escape = F, longtable = TRUE, booktabs= TRUE, linesep = "\\addlinespace") %>%
+  kable_styling(full_width = TRUE, latex_options = "repeat_header") %>%
+  column_spec(1,width = "4.5cm") %>%
+  column_spec(2, width = "1cm") %>%
+  column_spec(3, width = "5cm") %>%
+  column_spec(4, width = "2cm") %>%
+  column_spec(5, width = "2.5cm") %>%
+  row_spec(c(0),  bold = TRUE) %>%
+  row_spec(c(1,3,5,8,26,38,43), hline_after = TRUE, bold = TRUE)
+
+```
+
+\pagebreak
+
+# PRIMSA Abstract Checklist
+
+``` {r echo = FALSE, warning = FALSE, message = FALSE}
+
+df <- params$df_a
+rownames(df) <- NULL
+df <- sapply(df, as.character) # since your values are `factor`
+df[is.na(df)] <- ""
+
+df %>% 
+kable(format = "latex", escape = F, longtable = TRUE, booktabs= TRUE, linesep = "\\addlinespace") %>% 
+  kable_styling(full_width = TRUE) %>%
+  column_spec(1,width = "4.5cm") %>%
+  column_spec(2, width = "1cm") %>%
+  column_spec(3, width = "5cm") %>%
+  column_spec(4, width = "2cm") %>%
+  column_spec(5, width = "2.5cm") %>%
+  row_spec(c(0),  bold = TRUE) %>%
+  row_spec(c(1,3,5,10,13,16), hline_after = TRUE, bold = TRUE)
+
+```
