@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# PRISMA 2020 Checklist App
+# Code for the PRISMA 2020 Checklist App
 
 The PRISMA 2020 statement is intended to facilitate transparent
 reporting of systematic reviews (with or without meta-analysis). It has
