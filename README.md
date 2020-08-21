@@ -15,9 +15,9 @@ evaluating interventions.
 The PRISMA 2020 statement comprises a 27-item checklist addressing the
 introduction, methods, results and discussion sections of a systematic
 review report, and a 12-item checklist for the abstract. This app
-provides a user-friendly way to pOnce users record a response for each
-item in the checklist(s) below, they can generate and download a report
-of their completed checklist in Word or PDF format.
+provides a user-friendly way to produce PRISMA checklists. Once users record
+a response for eachitem in the checklist(s) below, they can generate and 
+download a report of their completed checklist in Word or PDF format.
 
 The app is available at:
 
