@@ -20,7 +20,7 @@ item in the checklist(s) below, they can generate and download a report
 of their completed checklist in Word or PDF format.
 
 The app is available at:
-[prisma.shinyapp.io/checklist](https://prisma.shinyapps.io/checklist)
+
 
 ## Acknowledgements
 
