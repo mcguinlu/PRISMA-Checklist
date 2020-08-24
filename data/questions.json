@@ -13,7 +13,7 @@
           "Type": "radio",
           "Domain": "Title",
           "Qnumber": "1",
-          "Label": "Identify the report as a systematic review or a systematic review with meta-analysis in the title.",
+          "Label": "Identify the report as a systematic review. ",
           "AnswerType": "YesNo"
         },
         {
@@ -43,7 +43,7 @@
           "Domain": "Rationale",
           
           "Qnumber": "3",
-          "Label": "Describe the rationale for the review in the context of existing knowledge.",
+          "Label": "Describe the rationale for the review in the context of existing knowledge. ",
           "AnswerType": "YesNo"
         },
         {
@@ -51,7 +51,7 @@
           "Domain": "Objectives",
           
           "Qnumber": "4",
-          "Label": "Provide an explicit statement of the question(s) the review addresses.",
+          "Label": "Provide an explicit statement of the objective(s) or question(s) the review addresses.",
           "AnswerType": "YesNo"
         },
         {
@@ -66,7 +66,7 @@
           "Type": "radio",
           "Domain": "Eligibility criteria",
           "Qnumber": "5",
-          "Label": "Specify the inclusion and exclusion criteria for the review.",
+          "Label": "Specify the inclusion and exclusion criteria for the review and how studies will be grouped for the syntheses.",
           "AnswerType": "YesNo"
 
         },
@@ -74,7 +74,7 @@
           "Type": "radio",
           "Domain": "Information sources",
           "Qnumber": "6",
-          "Label": "Specify all databases, registers, websites, organisations, individuals, reference lists and other sources searched or consulted to identify studies. Specify the date when each source was last searched or consulted.",
+          "Label": "Specify all databases, registers, websites, organisations, reference lists and other sources searched or consulted to identify studies. Specify the date when each source was last searched or consulted.",
           "AnswerType": "YesNo"
         },
         {
@@ -88,14 +88,14 @@
           "Type": "radio",
           "Domain": "Selection process",
           "Qnumber": "8",
-          "Label": "Specify the methods used to decide whether a study met the inclusion criteria of the review. At a minimum, state how many reviewers screened each record and each report retrieved, whether they worked independently, and whether automation tools were used (and if so, how).",
+          "Label": "Specify the methods used to decide whether a study met the inclusion criteria of the review, including how many reviewers screened each record and each report retrieved, whether they worked independently, and if applicable, details of automation tools used in the process.",
           "AnswerType": "YesNo"
         },
        {
           "Type": "radio",
           "Domain": "Data collection process",
           "Qnumber": "9",
-          "Label": "Specify the methods used to collect data from reports. At a minimum, state how many reviewers collected data from each report, whether they worked independently, and any processes for obtaining and confirming data from study investigators.",
+          "Label": "Specify the methods used to collect data from reports, including how many reviewers collected data from each report, whether they worked independently, any processes for obtaining or confirming data from study investigators, and if applicable, details of automation tools used in the process. ",
           "AnswerType": "YesNo"
         },
                {
@@ -116,7 +116,7 @@
           "Type": "radio",
           "Domain": "Study risk of bias assessment",
           "Qnumber": "11",
-          "Label": "Specify the methods used to assess risk of bias in the included studies. At a minimum, describe the tool(s) used, and state how many reviewers assessed each study and whether they worked independently.",
+          "Label": "Specify the methods used to assess risk of bias in the included studies, including details of the tool(s) used, how many reviewers assessed each study and whether they worked independently, and if applicable, details of automation tools used in the process. ",
           "AnswerType": "YesNo"
         },
                         {
@@ -130,14 +130,14 @@
           "Type": "radio",
           "Domain": "Results of syntheses",
           "Qnumber": "13a",
-          "Label": "Describe the processes used to determine which studies are eligible for each synthesis.",
+          "Label": "Describe the processes used to decide which studies were eligible for each synthesis. ",
           "AnswerType": "YesNo"
         },
         {
           "Type": "radio",
           "Domain": "",
           "Qnumber": "13b",
-          "Label": "Describe any methods required to prepare the data for synthesis, such as handling of missing summary statistics, or data conversions.",
+          "Label": "Describe any methods required to prepare the data for presentation or synthesis, such as handling of missing summary statistics, or data conversions.",
           "AnswerType": "YesNo"
         },
                 {
@@ -173,14 +173,14 @@
           "Type": "radio",
           "Domain": "Effect measures",
           "Qnumber": "14",
-          "Label": "Describe any methods used to assess the risk of bias due to missing results in a synthesis (arising from reporting biases).",
+          "Label": "Describe any methods used to assess risk of bias due to missing results in a synthesis (arising from reporting biases).",
           "AnswerType": "YesNo"
         },
                                 {
           "Type": "radio",
           "Domain": "Certainty assessment",
           "Qnumber": "15",
-          "Label": "Describe any methods used to assess the certainty (or confidence) in the body of evidence for an outcome.",
+          "Label": "Describe any methods used to assess certainty (or confidence) in the body of evidence for an outcome.",
           "AnswerType": "YesNo"
         },
         
@@ -203,14 +203,14 @@
           "Type": "radio",
           "Domain": "",
           "Qnumber": "16b",
-          "Label": "Provide citations of studies that met many but not all inclusion criteria (‘near-misses’) and explain why they were excluded.",
+          "Label": "Cite studies that met many but not all inclusion criteria (‘near-misses’) and explain why they were excluded.",
           "AnswerType": "YesNo"
         },
         {
           "Type": "radio",
           "Domain": "Study characteristics",
           "Qnumber": "17",
-          "Label": "Present the characteristics and citation(s) of each included study.",
+          "Label": "Cite each included study and present its characteristics.",
           "AnswerType": "YesNo"
         },
                 {
@@ -224,7 +224,7 @@
           "Type": "radio",
           "Domain": "Results of individual studies",
           "Qnumber": "19",
-          "Label": "For all outcomes, present, for each study: (a) summary statistics for each group (where appropriate) and (b) an effect estimate and confidence/credible interval, ideally using structured tables or plots.",
+          "Label": "For all outcomes, present, for each study: (a) summary statistics for each group (where appropriate) and (b) an effect estimate and its precision (e.g. confidence/credible interval), ideally using structured tables or plots.",
           "AnswerType": "YesNo"
         },
         {
@@ -238,35 +238,35 @@
           "Type": "radio",
           "Domain": "",
           "Qnumber": "20b",
-          "Label": "Present results of all syntheses conducted. If meta-analysis was done, present for each the summary estimate and its precision (e.g. confidence/credible interval) and measures of statistical heterogeneity. If comparing groups, describe the direction of the effect.",
+          "Label": "Present results of all statistical syntheses conducted. If meta-analysis was done, present for each the summary estimate and its precision (e.g. confidence/credible interval) and measures of statistical heterogeneity. If comparing groups, describe the direction of the effect.",
           "AnswerType": "YesNo"
         },
                 {
           "Type": "radio",
           "Domain": "",
           "Qnumber": "20c",
-          "Label": "Present results of any investigations of possible causes of heterogeneity among study results.",
+          "Label": "Present results of all investigations of possible causes of heterogeneity among study results.",
           "AnswerType": "YesNo"
         },
                 {
           "Type": "radio",
           "Domain": "",
           "Qnumber": "20d",
-          "Label": "Present results of any sensitivity analyses used to assess the robustness of the synthesized results.",
+          "Label": "Present results of all sensitivity analyses conducted to assess the robustness of the synthesized results.",
           "AnswerType": "YesNo"
         },
                                 {
           "Type": "radio",
           "Domain": "Risk of reporting biases in syntheses",
           "Qnumber": "21",
-          "Label": "Present assessments of the risk of bias due to missing results in a synthesis that were conducted.",
+          "Label": "Present assessments of risk of bias due to missing results (arising from reporting biases) for each synthesis assessed.",
           "AnswerType": "YesNo"
         },
                         {
           "Type": "radio",
           "Domain": "Certainty of evidence",
           "Qnumber": "22",
-          "Label": "Present assessments of the certainty (or confidence) in the body of evidence for an outcome that were conducted.",
+          "Label": "Present assessments of certainty (or confidence) in the body of evidence for each outcome assessed.",
           "AnswerType": "YesNo"
         },
         
@@ -318,14 +318,14 @@
           "Type": "radio",
           "Domain": "Registration and protocol",
           "Qnumber": "24a",
-          "Label": "Provide registration information for the review, including register name and registration number, or state that the review was not registered.",
+          "Label": "Provide registration information for the review, including register name and registration number, or state that the review was not registered. ",
           "AnswerType": "YesNo"
         },
         {
           "Type": "radio",
           "Domain": "",
           "Qnumber": "24b",
-          "Label": "Indicate where the review protocol can be accessed, or state that a protocol is not available.",
+          "Label": "Indicate where the review protocol can be accessed, or state that a protocol was not prepared.",
           "AnswerType": "YesNo"
         },
         {
@@ -372,7 +372,7 @@
           "Type": "radio",
           "Domain": "Title",
           "Qnumber": "1",
-          "Label": "Identify the report as a systematic review or a systematic review with meta-analysis in the title.",
+          "Label": "Identify the report as a systematic review.",
           "AnswerType": "YesNo"
         },
         {
@@ -387,7 +387,7 @@
           "Type": "radio",
           "Domain": "Objectives",
           "Qnumber": "2",
-          "Label": "Provide an explicit statement of the question(s) the review addresses.",
+          "Label": "Provide an explicit statement of the main objective(s) or question(s) the review addresses.",
           "AnswerType": "YesNo"
         },
         {
@@ -409,21 +409,21 @@
           "Type": "radio",
           "Domain": "Information sources",
           "Qnumber": "4",
-          "Label": "Specify the information sources used to identify studies and the date when each was last searched.",
+          "Label": "Specify the information sources (e.g. databases, registers) used to identify studies and the date when each was last searched. ",
           "AnswerType": "YesNo"
         },
         {
           "Type": "radio",
           "Domain": "Risk of bias and certainty",
           "Qnumber": "5",
-          "Label": "Specify the methods used to assess risk of bias in the included studies and certainty (or confidence) in the body of evidence for an outcome.",
+          "Label": "Specify the methods used to assess risk of bias in the included studies.",
           "AnswerType": "YesNo"
         },
         {
           "Type": "radio",
           "Domain": "Synthesis of results",
           "Qnumber": "6",
-          "Label": "Specify the methods used to present and synthesize results.",
+          "Label": "Specify the methods used to present and synthesize results. ",
           "AnswerType": "YesNo"
         },
         {
@@ -438,14 +438,14 @@
           "Type": "radio",
           "Domain": "Included studies",
           "Qnumber": "7",
-          "Label": "Give the total number of included studies and participants, and summarise relevant characteristics of studies.",
+          "Label": "Give the total number of included studies and participants and summarise relevant characteristics of studies.",
           "AnswerType": "YesNo"
         },
         {
           "Type": "radio",
           "Domain": "Synthesis of results",
           "Qnumber": "8",
-          "Label": "Present results for main outcomes. If meta-analysis was done, report the summary estimate, confidence/credible interval and the number of included studies and participants for each. If comparing groups, indicate the direction of the effect.",
+          "Label": "Present results for main outcomes, preferably indicating the number of included studies and participants for each. If meta-analysis was done, report the summary estimate and confidence/credible interval. If comparing groups, indicate the direction of the effect (i.e. which group is favoured).",
           "AnswerType": "YesNo"
         },
         {
@@ -460,7 +460,7 @@
           "Type": "radio",
           "Domain": "Limitations of evidence",
           "Qnumber": "9",
-          "Label": "Provide a brief summary of the limitations of the evidence included in the review.",
+          "Label": "Provide a brief summary of the limitations of the evidence included in the review (e.g. study risk of bias, inconsistency and imprecision).",
           "AnswerType": "YesNo"
         },
         {
