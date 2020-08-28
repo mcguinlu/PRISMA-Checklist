@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# PRISMA 2020 Checklist App
+# Code for the PRISMA 2020 Checklist App
 
 The PRISMA 2020 statement is intended to facilitate transparent
 reporting of systematic reviews (with or without meta-analysis). It has
@@ -15,12 +15,12 @@ evaluating interventions.
 The PRISMA 2020 statement comprises a 27-item checklist addressing the
 introduction, methods, results and discussion sections of a systematic
 review report, and a 12-item checklist for the abstract. This app
-provides a user-friendly way to pOnce users record a response for each
-item in the checklist(s) below, they can generate and download a report
-of their completed checklist in Word or PDF format.
+provides a user-friendly way to produce PRISMA checklists. Once users record
+a response for each item, they can generate and download a report of their
+completed checklist in Word or PDF format.
 
 The app is available at:
-[prisma.shinyapp.io/checklist](https://prisma.shinyapps.io/checklist)
+
 
 ## Acknowledgements
 
