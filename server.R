@@ -90,6 +90,10 @@ shinyServer(function(input, output, session) {
   # Three different set-ups: one for both, and one for each (Main ("_main") /
   # Abstract (_abs))
   
+  # observe({
+  #   shinyjs::disable("report")
+  # })
+  
   # Validation for both checklists
     whichComplete <- reactive({
       isComplete(answers = answers(), sectionsList = sectionsList, headList = headList)
@@ -98,15 +102,7 @@ shinyServer(function(input, output, session) {
     isDownloadable <- reactive({
       all(whichComplete())
     })
-    
-    observe({
-      if(isDownloadable()){
-        shinyjs::enable("report")
-      } else {
-        shinyjs::disable("report")
-      }
-    })
-  
+
   # Validation for Abstract checklist only
     whichComplete_abs <- reactive({
       isComplete(answers = answers(),
@@ -118,14 +114,7 @@ shinyServer(function(input, output, session) {
       all(whichComplete_abs())
     })
     
-    observe({
-      if(isDownloadable_abs()){
-        shinyjs::enable("report_abs")
-      } else {
-        shinyjs::disable("report_abs")
-      }
-    })
-  
+
   # Validation for Main checklist only
     whichComplete_main <- reactive({
       isComplete(answers = answers(),
@@ -136,12 +125,19 @@ shinyServer(function(input, output, session) {
     isDownloadable_main <- reactive({
       all(whichComplete_main())
     })
+
+    # Enable download only for those that are complete
     
     observe({
-      if(isDownloadable_main()){
-        shinyjs::enable("report_main")
-      } else {
-        shinyjs::disable("report_main")
+      shinyjs::disable("report")
+      if(isDownloadable() & input$report_type == "Main + Abstract"){
+        shinyjs::enable("report")
+      }
+      if(isDownloadable_abs() & input$report_type == "_abs"){
+        shinyjs::enable("report")
+      }
+      if(isDownloadable_main() & input$report_type == "_main"){
+        shinyjs::enable("report")
       }
     })
   
@@ -276,11 +272,11 @@ shinyServer(function(input, output, session) {
 
 # DOWNLOADS ---------------------------------------------------------------
 
-  # Download Main + Abstract report
+  # Download report
   output$report <- downloadHandler(
     filename = function() {
-      format <- ifelse(input$format == "Word", "docx", "pdf")
-      paste0("PRISMA (Main + Abstract) Checklist.", format)
+      format <- ifelse(input$format == "word", "docx", "pdf")
+      paste0("PRISMA Checklist.", format)
     },
     
     content = function(file) {
@@ -289,11 +285,12 @@ shinyServer(function(input, output, session) {
                           {
                             tempReport <- file.path(tempdir(), "report.Rmd")
                             tempfile <- file.path(tempdir(), "reference.docx")
+                            report_type <- ifelse(input$report_type == "Main + Abstract","",input$report_type)
                             
                             if (input$format == "PDF") {
-                              file.copy(paste0("www/doc/report_pdf_",input$orient,".Rmd"), tempReport, overwrite = TRUE)
+                              file.copy(paste0("www/doc/report_pdf",report_type,"_",input$orient,".Rmd"), tempReport, overwrite = TRUE)
                             } else {
-                              file.copy("www/doc/report_word.Rmd", tempReport, overwrite = TRUE)
+                              file.copy(paste0("www/doc/report_word",report_type,".Rmd"), tempReport, overwrite = TRUE)
                               file.copy(paste0("www/doc/word-styles-reference-",input$orient,".docx"),
                                         tempfile,
                                         overwrite = TRUE)
@@ -313,77 +310,26 @@ shinyServer(function(input, output, session) {
     }
   )
   
-  # Download Main report only
-  output$report_main <- downloadHandler(
-    filename = function() {
-      format <- ifelse(input$format == "Word", "docx", "pdf")
-      paste0("PRISMA (Main) Checklist.", format)
-    },
-    
-    content = function(file) {
-      shiny::withProgress(message = paste0("Downloading checklist"),
-                          value = 0.8,
-                          {
-                            tempReport <- file.path(tempdir(), "report.Rmd")
-                            tempfile <-
-                              file.path(tempdir(), "reference.docx")
-                            
-                            if (input$format == "PDF") {
-                              file.copy(paste0("www/doc/report_pdf_main_",input$orient,".Rmd"), tempReport, overwrite = TRUE)
-                            } else {
-                              file.copy("www/doc/report_word_main.Rmd", tempReport, overwrite = TRUE)
-                              file.copy(paste0("www/doc/word-styles-reference-",input$orient,".docx"),
-                                        tempfile,
-                                        overwrite = TRUE)
-                            }
-                            
-                            # Render the report
-                            rmarkdown::render(
-                              tempReport,
-                              output_file = file,
-                              params = list(df_m = rv$df_m), # Main data
-                              envir = new.env(parent = globalenv())
-                            )
-                          })
-    }
-  )
-  
-  # Download Abstract report only
-  output$report_abs <- downloadHandler(
-    filename = function() {
-      format <- ifelse(input$format == "Word", "docx", "pdf")
-      paste0("PRISMA (Abstract) Checklist.", format)
-    },
-    
-    content = function(file) {
-      shiny::withProgress(message = paste0("Downloading checklist"),
-                          value = 0.8,
-                          {
-                            tempReport <- file.path(tempdir(), "report.Rmd")
-                            tempfile <-
-                              file.path(tempdir(), "reference.docx")
-                            
-                            if (input$format == "PDF") {
-                              file.copy(paste0("www/doc/report_pdf_abs_",input$orient,".Rmd"), tempReport, overwrite = TRUE)
-                            } else {
-                              file.copy("www/doc/report_word_abs.Rmd", tempReport, overwrite = TRUE)
-                              file.copy(paste0("www/doc/word-styles-reference-",input$orient,".docx"),
-                                        tempfile,
-                                        overwrite = TRUE)
-                            }
-                            
-                            # Render the report
-                            rmarkdown::render(
-                              tempReport,
-                              output_file = file,
-                              params = list(df_a = rv$df_a), # Abstract data
-                              envir = new.env(parent = globalenv())
-                            )
-                          })
-    }
-  )
-  
 
+## Download citations
+  
+  output$downloadbib <- downloadHandler(
+    filename = function() {
+      paste("citation", ".bib", sep = "")
+    },
+    content = function(file) {
+      file.copy("www/prismacitation.bib", file)
+    }
+  )
+  
+  output$downloadris <- downloadHandler(
+    filename = function() {
+      paste("citation", ".ris", sep = "")
+    },
+    content = function(file) {
+      file.copy("www/prismacitation.ris", file)
+    }
+  )
   
   
 })

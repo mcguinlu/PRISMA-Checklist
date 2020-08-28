@@ -47,7 +47,7 @@ shinyUI(
         align = "left",
         actionButton(
           inputId = "triggerIntro",
-          label = "Additional information",
+          label = "About/Citation information",
           icon = icon("info-circle")
         )
       ),
@@ -59,9 +59,19 @@ shinyUI(
           animate = FALSE,
           h4("Generate & Download Report"),
           selectInput(
+            inputId = "report_type",
+            label = "Report type",
+            choices = c("Main + Abstract",
+                        "Abstract only" = "_abs"),
+            multiple = FALSE,
+            selected = "Main + Abstract",
+            width = "auto"
+          ),
+          
+          selectInput(
             inputId = "format",
             label = "Format",
-            choices = c("Word",
+            choices = c("Word" = "word",
                         "PDF"),
                         multiple = FALSE,
                         selected = "Word",
@@ -78,15 +88,8 @@ shinyUI(
           ),
           br(),
           
-            downloadButton('report','Download Main + Abstract', width = "100%"),
-            br(),
-            br(),
-            downloadButton('report_main', 'Download Main only', width = "100%"),
-            br(),
-            br(),
-            downloadButton('report_abs',  'Download Abstract only  '),
-            
-            
+            downloadButton('report','Download Checklist'),
+          helpText("The \"Download Checklist\" button will only become active once you have responsed to all relevant items."),
             icon = icon("file-alt"),
             up = FALSE,
             label = "Generate Report",
@@ -123,11 +126,19 @@ shinyUI(
         size = "large",
         includeMarkdown("www/doc/helpText.Rmd"),
         br(),
-        tags$a(
-          tags$img(src = "img/GitHub-Mark-32px.png"),
-          href = "https://github.com/mcguinlu/PRISMA-Checklist",
-          target = "_blank"
-        )
+        div(
+        downloadButton("downloadbib", "Download citation (.bib)"),
+        downloadButton("downloadris", "Download citation (.ris)"), style="text-align: center;"),
+        br(),
+        br(),
+        div(img(
+          tags$a(
+            tags$img(src = "img/GitHub-Mark-32px.png"),
+            href = "https://github.com/mcguinlu/PRISMA-Checklist",
+            target = "_blank"
+          )
+        ), style = "text-align: center;")
+
       )
       
       
