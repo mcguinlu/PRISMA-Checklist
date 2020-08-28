@@ -1,15 +1,9 @@
 ### What is the PRISMA checklist?
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultricies, libero eget vulputate gravida, orci ex vestibulum ligula, vitae sodales massa turpis id libero. Curabitur ut leo tellus. Phasellus nec mi ac purus luctus tincidunt. Nulla commodo convallis gravida. Mauris vitae ligula vitae est iaculis sodales. Proin at vulputate nisi. Proin sollicitudin enim eu bibendum vehicula. Maecenas non risus quis ipsum luctus gravida. Sed consectetur nunc et nisl volutpat dignissim. Morbi et convallis velit. Pellentesque ut diam sit amet est rutrum ornare. Maecenas eu dignissim felis. Aenean at interdum purus.
-
 ### How to use it?
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultricies, libero eget vulputate gravida, orci ex vestibulum ligula, vitae sodales massa turpis id libero. Curabitur ut leo tellus. Phasellus nec mi ac purus luctus tincidunt. Nulla commodo convallis gravida. Mauris vitae ligula vitae est iaculis sodales. Proin at vulputate nisi. Proin sollicitudin enim eu bibendum vehicula. Maecenas non risus quis ipsum luctus gravida. Sed consectetur nunc et nisl volutpat dignissim. Morbi et convallis velit. Pellentesque ut diam sit amet est rutrum ornare. Maecenas eu dignissim felis. Aenean at interdum purus.
 
 ### About the team
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultricies, libero eget vulputate gravida, orci ex vestibulum ligula, vitae sodales massa turpis id libero. Curabitur ut leo tellus. Phasellus nec mi ac purus luctus tincidunt. Nulla commodo convallis gravida. Mauris vitae ligula vitae est iaculis sodales. Proin at vulputate nisi. Proin sollicitudin enim eu bibendum vehicula. Maecenas non risus quis ipsum luctus gravida. Sed consectetur nunc et nisl volutpat dignissim. Morbi et convallis velit. Pellentesque ut diam sit amet est rutrum ornare. Maecenas eu dignissim felis. Aenean at interdum purus.
-
 You can cite the PRISMA Project as follows: 
 
-> PLoS Medicine (OPEN ACCESS) Moher D, Liberati A, Tetzlaff J, Altman DG, The PRISMA Group (2009). Preferred Reporting Items for Systematic Reviews and Meta-Analyses: The PRISMA Statement. PLoS Med 6(7): e1000097. doi:10.1371/journal.pmed1000097
+> Moher David, Liberati Alessandro, Tetzlaff Jennifer, Altman Douglas G. Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement BMJ 2009; 339 :b2535
