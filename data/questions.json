@@ -1,6 +1,6 @@
 {  "Sections" : {
     "PRISMA MAIN CHECKLIST": {
-      "Name": "PRISMA MAIN CHECKLIST",
+      "Name": "PRISMA 2020 MAIN CHECKLIST",
       "Indicator": "m",
       "Value": "PRISMA",
       "Questions": [
@@ -28,7 +28,7 @@
           "Type": "text",
           "Domain": "Abstract", 
           "Qnumber": "2",
-          "Label": "Please complete the PRISMA-A checklist."
+          "Label": "See the PRISMA 2020 for Abstracts checklist"
         },
         {
           "Type":"break"
@@ -128,7 +128,7 @@
         },
                 {
           "Type": "radio",
-          "Domain": "Results of syntheses",
+          "Domain": "Synthesis methods",
           "Qnumber": "13a",
           "Label": "Describe the processes used to decide which studies were eligible for each synthesis. ",
           "AnswerType": "YesNo"
@@ -165,13 +165,13 @@
           "Type": "radio",
           "Domain": "",
           "Qnumber": "13f",
-          "Label": "Describe any sensitivity analyses used to assess robustness of the synthesized results.",
+          "Label": "Describe any sensitivity analyses conducted to assess robustness of the synthesized results.",
           "AnswerType": "YesNo"
         },
         
                                 {
           "Type": "radio",
-          "Domain": "Effect measures",
+          "Domain": "Reporting bias assessment",
           "Qnumber": "14",
           "Label": "Describe any methods used to assess risk of bias due to missing results in a synthesis (arising from reporting biases).",
           "AnswerType": "YesNo"
@@ -257,7 +257,7 @@
         },
                                 {
           "Type": "radio",
-          "Domain": "Risk of reporting biases in syntheses",
+          "Domain": "Reporting biases",
           "Qnumber": "21",
           "Label": "Present assessments of risk of bias due to missing results (arising from reporting biases) for each synthesis assessed.",
           "AnswerType": "YesNo"
@@ -344,14 +344,14 @@
         },
         {
           "Type": "radio",
-          "Domain": "Declaration of interests",
+          "Domain": "Competing interests",
           "Qnumber": "26",
           "Label": "Declare any competing interests of review authors.",
           "AnswerType": "YesNo"
         },
         {
           "Type": "radio",
-          "Domain": "Data sharing",
+          "Domain": "Availability of data, code and other materials",
           "Qnumber": "27",
           "Label": "Report which of the following are publicly available and where they can be found: template data collection forms; data extracted from included studies; data used for all analyses; analytic code; any other materials used in the review.",
           "AnswerType": "YesNo"
@@ -359,7 +359,7 @@
       ]
     },
     "ABSTRACT" : {
-      "Name": "PRISMA ABSTRACT CHECKLIST",
+      "Name": "PRISMA 2020 ABSTRACT CHECKLIST",
       "Indicator": "a",
       "Value": "PRISMA-A",
       "Questions": [
@@ -414,7 +414,7 @@
         },
         {
           "Type": "radio",
-          "Domain": "Risk of bias and certainty",
+          "Domain": "Risk of biascitat",
           "Qnumber": "5",
           "Label": "Specify the methods used to assess risk of bias in the included studies.",
           "AnswerType": "YesNo"
