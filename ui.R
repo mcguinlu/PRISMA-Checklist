@@ -62,6 +62,7 @@ shinyUI(
             inputId = "report_type",
             label = "Report type",
             choices = c("Main + Abstract",
+                        "Main only" = "_main",
                         "Abstract only" = "_abs"),
             multiple = FALSE,
             selected = "Main + Abstract",
