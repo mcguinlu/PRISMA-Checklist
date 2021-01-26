@@ -17,6 +17,8 @@ header-includes:
   - \usepackage{tabu}
   - \usepackage{threeparttable}
   - \usepackage[normalem]{ulem}
+  - \usepackage{colortbl}
+  - \arrayrulecolor{white}
 ---
 
 # PRISMA 2020 Main Checklist
@@ -25,19 +27,27 @@ header-includes:
 options(kableextra.auto_format = FALSE)
 
 df <- params$df_m
+colnames(df)[4] <- "Location"
 rownames(df) <- NULL
 df <- sapply(df, as.character) # since your values are `factor`
 df[is.na(df)] <- ""
 
 df %>%
-kable(format = "latex", escape = F, longtable = TRUE, booktabs= TRUE, linesep = "\\addlinespace") %>%
-  kable_styling(full_width = TRUE, latex_options = "repeat_header") %>%
+kable(format = "latex", escape = F, longtable = TRUE, booktabs= TRUE,
+      linesep = "\\addlinespace",
+      col.names = c("\\multirow{1}{*}[0pt]{Topic}",
+                           "\\multirow{1}{*}[0pt]{No.}",
+                           "\\multirow{1}{*}[0pt]{Item}",
+                           "Location where item is reported")) %>%
+  kable_styling(full_width = TRUE, latex_options = "repeat_header",) %>%
+  row_spec(-1, hline_after = FALSE) %>%
+  row_spec(0,  bold = TRUE, background = "#63639A", color = "white", extra_latex_after = "\\arrayrulecolor{white}") %>%
+  row_spec(c(1,3,5,8,26,38,43), background = "#FFFFCC", bold = TRUE) %>%
   column_spec(1,width = "4.5cm") %>%
   column_spec(2, width = "1cm") %>%
-  column_spec(3, width = "7cm") %>%
-  column_spec(4, width = "2cm") %>%
-  column_spec(5, width = "7cm") %>%
-  row_spec(c(0),  bold = TRUE) %>%
-  row_spec(c(1,3,5,8,26,38,43), hline_after = TRUE, bold = TRUE)
+  column_spec(3, width = "11cm") %>%
+  column_spec(4, width = "5cm")
 
 ```
+
+_From:_  Page MJ, McKenzie JE, Bossuyt PM, Boutron I, Hoffmann TC, Mulrow CD, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. MetaArXiv. 2020, September 14. DOI: 10.31222/osf.io/v7gm2. For more information, visit: [www.prisma-statement.org](www.prisma-statement.org)

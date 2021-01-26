@@ -27,60 +27,60 @@ shinyServer(function(input, output, session) {
 
   # For testing - delete when done
   observeEvent(input$fill, {
-    updateRadioButtons(session = session, "ind_a_2", selected = "No")
-    updateRadioButtons(session = session, "ind_a_3", selected = "Yes")
-    updateRadioButtons(session = session, "ind_a_4", selected = "No")
-    updateRadioButtons(session = session, "ind_a_5", selected = "Yes")
-    updateRadioButtons(session = session, "ind_a_6", selected = "Yes")
-    updateRadioButtons(session = session, "ind_a_7", selected = "Yes")
-    updateRadioButtons(session = session, "ind_a_8", selected = "Yes")
-    updateRadioButtons(session = session, "ind_a_9", selected = "Yes")
-    updateRadioButtons(session = session, "ind_a_10", selected = "Yes")
-    updateRadioButtons(session = session, "ind_a_11", selected = "Yes")
-    updateRadioButtons(session = session, "ind_a_12", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_1", selected = "Yes")
-    updateTextInput(session = session, "ind_m_1_text", value = "Section 1, Page 2")
-    updateTextInput(session = session, "ind_m_3_text", value = "A really long string to see if the reports look okay when there is a lot of text.")
-    updateRadioButtons(session = session, "ind_m_3", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_4", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_5", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_6", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_7", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_8", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_9", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_10a", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_10b", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_11", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_12", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_13a", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_13b", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_13c", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_13d", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_13e", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_13f", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_14", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_15", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_16a", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_16b", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_17", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_18", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_19", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_20a", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_20b", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_20c", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_20d", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_21", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_22", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_23a", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_23b", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_23c", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_23d", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_24a", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_24b", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_24c", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_25", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_26", selected = "Yes")
-    updateRadioButtons(session = session, "ind_m_27", selected = "Yes")
+    updateRadioButtons(session = session, "ind_a_1", selected = "Not reported")
+    updateRadioButtons(session = session, "ind_a_2", selected = "Not reported")
+    updateRadioButtons(session = session, "ind_a_3", selected = "Reported")
+    updateRadioButtons(session = session, "ind_a_4", selected = "Not reported")
+    updateRadioButtons(session = session, "ind_a_5", selected = "Reported")
+    updateRadioButtons(session = session, "ind_a_6", selected = "Reported")
+    updateRadioButtons(session = session, "ind_a_7", selected = "Reported")
+    updateRadioButtons(session = session, "ind_a_8", selected = "Reported")
+    updateRadioButtons(session = session, "ind_a_9", selected = "Reported")
+    updateRadioButtons(session = session, "ind_a_10", selected = "Reported")
+    updateRadioButtons(session = session, "ind_a_11", selected = "Reported")
+    updateRadioButtons(session = session, "ind_a_12", selected = "Reported")
+    updateRadioButtons(session = session, "ind_m_1", selected = "Reported")
+    updateTextInput(session = session, "ind_m_1", value = "Section 1, Page 2")
+    updateTextInput(session = session, "ind_m_3", value = "Section 4, Line 7")
+    updateTextInput(session = session, "ind_m_4", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_5", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_6", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_7", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_8", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_9", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_10a", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_10b", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_11", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_12", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_13a", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_13b", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_13c", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_13d", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_13e", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_13f", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_14", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_15", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_16a", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_16b", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_17", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_18", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_19", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_20a", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_20b", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_20c", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_20d", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_21", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_22", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_23a", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_23b", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_23c", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_23d", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_24a", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_24b", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_24c", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_25", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_26", value = "Line XX-ZZ")
+    updateTextInput(session = session, "ind_m_27", value = "Line XX-ZZ")
     })
   
 
@@ -204,28 +204,21 @@ shinyServer(function(input, output, session) {
     # Create clean Main checklist 
     # Extract answers and text to dataframes
     ll <- answers()[grepl("ind_m_.*\\b", names(answers()))]
-    df2 <- data.frame(ID = rep(names(ll), sapply(ll, length)),
-                      response = unlist(ll))
-    ll <- answers()[grepl("ind_m_.*_text\\b", names(answers()))]
     df <- data.frame(ID = rep(names(ll), sapply(ll, length)),
-                     text = unlist(ll))
-    
+                      response = unlist(ll))
+
     # Get item ID
     df$ID <- gsub("ind_m_", "",df$ID)
-    df2$ID <- gsub("ind_m_", "",df2$ID)
-    df$ID <- gsub("_text", "",df$ID)
-    
+
     # Merge to create dataframe containing ID, answer, answer text
-    df <- merge(df2, df, by= "ID")
-    colnames(df)[2] <- "Reported?"
-    colnames(df)[3] <- "Page/Section"
+    colnames(df)[2] <- "Location where item is reported"
     
     # Merge with dataframe containing question text
     df_m <- merge(df_m, df, by.x = "No", by.y = "ID", all.x = TRUE, sort = FALSE)
     
     # Order by seq and select relevant columns
     df_m <- df_m[order(df_m$seq),] %>%
-      select(Domain,No,Label,"Reported?","Page/Section")
+      select(Domain,No,Label,"Location where item is reported")
     
     colnames(df_m)[1] <- "Topic"
     colnames(df_m)[2] <- "No."
@@ -237,28 +230,23 @@ shinyServer(function(input, output, session) {
     
     # Create clean abstract checklist dataframe (with answers)
     ll <- answers()[grepl("ind_a_.*\\b", names(answers()))]
-    df2 <- data.frame(ID = rep(names(ll), sapply(ll, length)),
-                      response = unlist(ll))
-    ll <- answers()[grepl("ind_a_.*_text\\b", names(answers()))]
     df <- data.frame(ID = rep(names(ll), sapply(ll, length)),
-                     text = unlist(ll))
-    
+                      response = unlist(ll))
+
     # Get item ID
     df$ID <- gsub("ind_a_", "",df$ID)
-    df2$ID <- gsub("ind_a_", "",df2$ID)
-    df$ID <- gsub("_text", "",df$ID)
+    df$response <- gsub("Reported","Yes",df$response)
+    df$response <- gsub("Not reported","No",df$response)
     
     # Merge to create dataframe containing ID, answer, answer text
-    df <- merge(df2, df, by= "ID")
     colnames(df)[2] <- "Reported?"
-    colnames(df)[3] <- "Page/Section"
-    
+
     # Merge with dataframe containing question text    
     df_a <- merge(df_a, df, by.x = "No", by.y = "ID", all.x = TRUE, sort = FALSE)
     
     # Order by seq and select relevant columns
     df_a <- df_a[order(df_a$seq),] %>%
-      select(Domain,No,Label,"Reported?","Page/Section")
+      select(Domain,No,Label,"Reported?")
     
     colnames(df_a)[1] <- "Topic"
     colnames(df_a)[2] <- "No."

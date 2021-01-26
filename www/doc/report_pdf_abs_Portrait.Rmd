@@ -16,6 +16,8 @@ header-includes:
   - \usepackage{tabu}
   - \usepackage{threeparttable}
   - \usepackage[normalem]{ulem}
+  - \usepackage{colortbl}
+  - \arrayrulecolor{white}
 ---
 
 # PRIMSA Abstract Checklist
@@ -28,15 +30,19 @@ rownames(df) <- NULL
 df <- sapply(df, as.character) # since your values are `factor`
 df[is.na(df)] <- ""
 
+
 df %>% 
 kable(format = "latex", escape = F, longtable = TRUE, booktabs= TRUE, linesep = "\\addlinespace") %>% 
   kable_styling(full_width = TRUE) %>%
+  row_spec(c(0),  bold = TRUE, background = "#63639A", color = "white", hline_after = FALSE) %>%
+  row_spec(c(1,3,5,10,13,16), background = "#FFFFCC", bold = TRUE) %>%
   column_spec(1,width = "4.5cm") %>%
   column_spec(2, width = "1cm") %>%
-  column_spec(3, width = "5cm") %>%
-  column_spec(4, width = "2cm") %>%
-  column_spec(5, width = "2.5cm") %>%
-  row_spec(c(0),  bold = TRUE) %>%
-  row_spec(c(1,3,5,10,13,16), hline_after = TRUE, bold = TRUE)
+  column_spec(3, width = "7cm") %>%
+  column_spec(4, width = "2.5cm") 
 
 ```
+
+&nbsp;
+
+_From:_  Page MJ, McKenzie JE, Bossuyt PM, Boutron I, Hoffmann TC, Mulrow CD, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. MetaArXiv. 2020, September 14. DOI: 10.31222/osf.io/v7gm2. For more information, visit: [www.prisma-statement.org](www.prisma-statement.org)

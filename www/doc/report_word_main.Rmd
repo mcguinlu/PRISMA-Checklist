@@ -16,12 +16,14 @@ df <- params$df_m
 
 flextable(df) %>%
   merge_v(j = 1, target = NULL, part = "body") %>%
-  bg(bg = "#A6A6A6", part = "header") %>%
+  fontsize(size = 9, part = "all") %>%
+  bg(bg = "#63639A", part = "header") %>%
+  color(color = "white", part = "header") %>%
   bold(part = "header") %>%
   bold(j = 1, part = "body") %>%
   align(align = "center", part = "all")  %>%
   bg(i = ~ is.na(df_m$No),
-     bg = "#DDDDDD",
+     bg = "#FFFFCC",
      part = "body") %>%
   valign(valign = "top", part = "body") %>%
   border_outer(border = fp_border(color="black", width = 1), part = "all") %>%
@@ -29,3 +31,7 @@ flextable(df) %>%
   set_table_properties(layout = "autofit")
 
 ```
+
+&nbsp;
+
+_From:_  Page MJ, McKenzie JE, Bossuyt PM, Boutron I, Hoffmann TC, Mulrow CD, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. MetaArXiv. 2020, September 14. DOI: 10.31222/osf.io/v7gm2. For more information, visit: [www.prisma-statement.org](www.prisma-statement.org) 

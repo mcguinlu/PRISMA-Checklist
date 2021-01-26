@@ -36,8 +36,8 @@ customField <- function(ind) {
         column(2, br(), strong(ind$Domain)),
         column(1, br(), strong(ind$Qnumber), align = "middle"),
         column(4, br(), ind$Label),
-        column(2, br(), actionLink("gotoAb", "Go to PRISMA-A"), align = "middle"),
-        column(3)
+        column(4, br(), actionLink("gotoAb", "Go to PRISMA-A"), align = "middle"),
+        column(1)
       ))
     } else {
       # Adds row with 
@@ -68,14 +68,14 @@ customButton <- function(ind){
   
   
   if(ind$Type != "break"){ # when the item is not a comment, show the button in a 6:4 format (label: button)
+    
     fluidPage( # wrapping into another fluid page makes a slight indentation of the questions from the text fields
                      fluidRow(column(2, br(), strong(ind$Domain)),
                               column(1, br(), strong(ind$Qnumber), align = "middle"),
                               column(4, br(), ind$Label, 
                                      a(ind$href, href = ind$href, target = "_blank"),
                                      ind$LabelEnd), # this makes the buttons appear horizonally aligned
-                              column(2, switchButtons(ind, type = "radio"), align = "middle"), #, create a standard shiny button
-                              column(2, switchButtons(ind, type = "textInput")),
+                              column(4, switchButtons(ind), align = "middle"), #, create a standard shiny button
                               column(1, br(), # adds exclamation circle next to the item
                                      tags$div(
                                        id = paste0("div", ind$Name, "Checker"),
@@ -86,6 +86,7 @@ customButton <- function(ind){
                                      )
     )
     )
+  
   } else{
     # If the Type is a break, produce a horizontal rule.
     # Used to seperate the sections
@@ -105,10 +106,10 @@ switchButtons <- function(ind, type){
   }
   
   # switch between different input types
-  switch (type,
-    "radio"     = radioButtons(inputId = paste0(ind$Name), label = "", choices = answers, selected = character(0),
+  switch (ind$AnswerType,
+    "YesNo"     = radioButtons(inputId = paste0(ind$Name), label = "", choices = answers, selected = character(0),
                                inline = TRUE),
-    "textInput" = textInput(inputId = paste0(ind$Name,"_text"), label = "", value = "", placeholder = "Page or section number" ),
+    "Text" = textInput(inputId = paste0(ind$Name), label = "", value = "", placeholder = "Location where item is reported" ),
   )
 }
 

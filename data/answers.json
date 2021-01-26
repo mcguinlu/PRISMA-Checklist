@@ -1,4 +1,4 @@
 { "Answers": {
-  "YesNo": {"Yes": "Yes", "No": "No"}
+  "YesNo": {"Reported": "Reported", "Not reported": "Not reported"}
 }
 }
