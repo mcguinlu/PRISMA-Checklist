@@ -5,9 +5,9 @@ account: prisma
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2402311
-bundleId: 4145735
+bundleId: 4465784
 url: https://prisma.shinyapps.io/checklist/
-when: 1611679622.82492
+when: 1618321408.31263
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: reference/PRISMA_2020_checklist_20200414 (002).pdf

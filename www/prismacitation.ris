@@ -1,15 +1,37 @@
 TY  - JOUR
-T1  - Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement
+T1  - The PRISMA 2020 statement: an updated guideline for reporting systematic reviews
 JF  - BMJ
 JO  - BMJ
-DO  - 10.1136/bmj.b2535
-VL  - 339
-SP  - b2535
+DO  - 10.1136/bmj.n71
+VL  - 372
+SP  - n71
+AU  - Page, Matthew J
+AU  - McKenzie, Joanne E
+AU  - Bossuyt, Patrick M
+AU  - Boutron, Isabelle
+AU  - Hoffmann, Tammy C
+AU  - Mulrow, Cynthia D
+AU  - Shamseer, Larissa
+AU  - Tetzlaff, Jennifer M
+AU  - Akl, Elie A
+AU  - Brennan, Sue E
+AU  - Chou, Roger
+AU  - Glanville, Julie
+AU  - Grimshaw, Jeremy M
+AU  - Hróbjartsson, Asbjørn
+AU  - Lalu, Manoj M
+AU  - Li, Tianjing
+AU  - Loder, Elizabeth W
+AU  - Mayo-Wilson, Evan
+AU  - McDonald, Steve
+AU  - McGuinness, Luke A
+AU  - Stewart, Lesley A
+AU  - Thomas, James
+AU  - Tricco, Andrea C
+AU  - Welch, Vivian A
+AU  - Whiting, Penny
 AU  - Moher, David
-AU  - Liberati, Alessandro
-AU  - Tetzlaff, Jennifer
-AU  - Altman, Douglas G
-Y1  - 2009/07/21
-UR  - http://www.bmj.com/content/339/bmj.b2535.abstract
-N2  - David Moher and colleagues introduce PRISMA, an update of the QUOROM guidelines for reporting systematic reviews and meta-analysesSystematic reviews and meta-analyses have become increasingly important in health care. Clinicians read them to keep up to date with their specialty,1 2 and they are often used as a starting point for developing clinical practice guidelines. Granting agencies may require a systematic review to ensure there is justification for further research,3 and some medical journals are moving in this direction.4 As with all research, the value of a systematic review depends on what was done, what was found, and the clarity of reporting. As with other publications, the reporting quality of systematic reviews varies, limiting readers’ ability to assess the strengths and weaknesses of those reviews.Several early studies evaluated the quality of review reports. In 1987 Mulrow examined 50 review articles published in four leading medical journals in 1985 and 1986 and found that none met all eight explicit scientific criteria, such as a quality assessment of included studies.5 In 1987 Sacks and colleagues evaluated the adequacy of reporting of 83 meta-analyses on 23 characteristics in six domains.6 Reporting was generally poor; between one and 14 characteristics were adequately reported (mean 7.7, standard deviation 2.7). A 1996 update of this study found little improvement.7In 1996, to address the suboptimal reporting of meta-analyses, an international group developed a guidance called the QUOROM statement (QUality Of Reporting Of Meta-analyses), which focused on the reporting of meta-analyses of randomised controlled trials.8 In this article, we summarise a revision of these guidelines, renamed PRISMA (Preferred Reporting Items for Systematic reviews and Meta-Analyses), which have been updated to address several conceptual and practical advances in the science of systematic reviews (see box).Conceptual issues in the evolution from QUOROM to PRISMACompleting a systematic review is an iterative processThe conduct of a systematic …
+Y1  - 2021/03/29
+UR  - http://www.bmj.com/content/372/bmj.n71.abstract
+N2  - The Preferred Reporting Items for Systematic reviews and Meta-Analyses (PRISMA) statement, published in 2009, was designed to help systematic reviewers transparently report why the review was done, what the authors did, and what they found. Over the past decade, advances in systematic review methodology and terminology have necessitated an update to the guideline. The PRISMA 2020 statement replaces the 2009 statement and includes new reporting guidance that reflects advances in methods to identify, select, appraise, and synthesise studies. The structure and presentation of the items have been modified to facilitate implementation. In this article, we present the PRISMA 2020 27-item checklist, an expanded checklist that details reporting recommendations for each item, the PRISMA 2020 abstract checklist, and the revised flow diagrams for original and updated reviews.Systematic reviews serve many critical roles. They can provide syntheses of the state of knowledge in a field, from which future research priorities can be identified; they can address questions that otherwise could not be answered by individual studies; they can identify problems in primary research that should be rectified in future studies; and they can generate or evaluate theories about how or why phenomena occur. Systematic reviews therefore generate various types of knowledge for different users of reviews (such as patients, healthcare providers, researchers, and policy makers).12 To ensure a systematic review is valuable to users, authors should prepare a transparent, complete, and accurate account of why the review was done, what they did (such as how studies were identified and selected) and what they found (such as characteristics of contributing studies and results of meta-analyses). Up-to-date reporting guidance facilitates authors achieving this.3The Preferred Reporting Items for Systematic reviews and Meta-Analyses (PRISMA) statement published in 2009 (hereafter referred to as PRISMA 2009)45678910 …
 ER  - 

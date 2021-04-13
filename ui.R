@@ -47,7 +47,7 @@ shinyUI(
         align = "left",
         actionButton(
           inputId = "triggerIntro",
-          label = "About/Citation information",
+          label = "About & Citation Info",
           icon = icon("info-circle")
         )
       ),
@@ -122,16 +122,36 @@ shinyUI(
       
       shinyBS::bsModal(
         id = "intro",
-        title = "About",
+        title = "About & Citation Info",
         trigger = "triggerIntro",
         size = "large",
+        h3(strong("Citation Information")),
         includeMarkdown("www/doc/helpText.Rmd"),
         br(),
         div(
         downloadButton("downloadbib", "Download citation (.bib)"),
         downloadButton("downloadris", "Download citation (.ris)"), style="text-align: center;"),
         br(),
+        hr(),
+        h3(strong("Found a bug?")),
+        p(
+          "Please ",
+          a(href = "mailto:luke.mcguinness@bristol.ac.uk?cc=matthew.page@monash.edu&Subject=PRISMA2020%20Checklist%20Query", "email us!")
+        ),
         br(),
+        hr(),
+        h3(strong("About")),
+        p(
+          "This application was developed by ",
+          a(href = "https://www.lukemcguinness.com/", "Luke McGuinness,"),
+          " adapted from a similar application created for the",
+          a(href = "https://github.com/BalazsAczel/TransparencyChecklist", "Transparency Checklist."),
+          "The full source code for this application is available via the ",
+          a(href = "https://github.com/mcguinlu/PRISMA-Checklist", "GitHub repository.")
+        ),
+        br(),
+        
+        
         div(img(
           tags$a(
             tags$img(src = "img/GitHub-Mark-32px.png"),

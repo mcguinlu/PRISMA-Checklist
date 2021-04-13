@@ -1,9 +1,3 @@
-### What is the PRISMA checklist?
+You can cite the PRISMA2020 project as follows: 
 
-### How to use it?
-
-### About the team
-
-You can cite the PRISMA Project as follows: 
-
-> Moher David, Liberati Alessandro, Tetzlaff Jennifer, Altman Douglas G. Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement BMJ 2009; 339 :b2535
+> Page M J, McKenzie J E, Bossuyt P M, Boutron I, Hoffmann T C, Mulrow C D et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews BMJ 2021; 372 :n71 doi:10.1136/bmj.n71

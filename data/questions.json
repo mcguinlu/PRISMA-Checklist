@@ -65,7 +65,7 @@
           "Type": "radio",
           "Domain": "Eligibility criteria",
           "Qnumber": "5",
-          "Label": "Specify the inclusion and exclusion criteria for the review and how studies will be grouped for the syntheses.",
+          "Label": "Specify the inclusion and exclusion criteria for the review and how studies were grouped for the syntheses.",
           "AnswerType": "Text"
 
         },
@@ -230,7 +230,7 @@
           "Type": "radio",
           "Domain": "Results of syntheses",
           "Qnumber": "20a",
-          "Label": "For each synthesis, summarise the characteristics and risk of bias among contributing studies.",
+          "Label": "For each synthesis, briefly summarise the characteristics and risk of bias among contributing studies.",
           "AnswerType": "Text"
         },
         {
@@ -413,7 +413,7 @@
         },
         {
           "Type": "radio",
-          "Domain": "Risk of biascitat",
+          "Domain": "Risk of bias",
           "Qnumber": "5",
           "Label": "Specify the methods used to assess risk of bias in the included studies.",
           "AnswerType": "YesNo"
